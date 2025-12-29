@@ -1,0 +1,171 @@
+
+<script>
+
+//even numbers
+
+function evennumber(arr){
+    const even = []
+
+    for(let i=0 ; i<arr.length;i++){
+        if(arr[i]%2 ===0){
+            even.push(arr[i])
+        }
+    }
+    return even
+
+}
+console.log(evennumber([1,2,3,4,5,6,7,8,9]));
+
+//return day 
+function day(number){
+    switch(number){
+        case 1:
+            console.log("Monday");
+            break
+        case 2:
+            console.log("Tuesday");
+            break
+        case 3:
+            console.log("wednesday");
+            break
+        case 4:
+            console.log("Thursday");
+            break
+        case 5:
+            console.log("Friday");
+            break
+        case 6:
+            console.log("Saturday");
+            break
+        case 7:
+            console.log("Sunday");
+            break
+        default:
+            console.log("Invalid inputs");
+            break
+                        
+                
+                
+                
+            
+    }
+}
+day(4);
+day(9)
+
+//return the count of students
+function countstudents(students) {
+    const student = { A: 0, B: 0, C: 0 };
+
+    for (let i = 0; i < students.length; i++) {
+        const marks = students[i].marks;
+
+        if (marks >= 90) {
+            student.A++;
+        } else if (marks >= 75) {
+            student.B++;
+        } else {
+            student.C++;
+        }
+    }
+
+    return student;
+}
+
+const marks2 = [
+  { name: "Ajay", marks: 93 },
+  { name: "karthick", marks: 90 },
+  { name: "Janu", marks: 85 },
+  { name: "Janani", marks: 50 }
+];
+
+console.log(countstudents(marks2));
+
+//truthy or falsy
+
+function check (truthyfalsy){
+    return truthyfalsy ?"truthy":"falsy"
+
+}
+console.log(check(0));
+console.log(check(""));
+console.log(check(null));
+console.log(check(undefined));
+console.log(check([]));
+console.log(check({}));
+console.log(check(false));
+console.log(check("hello"));
+
+//truthy values
+
+function truthyvalue(value){
+   return value.filter(items => items)
+    
+
+}
+const mixedvalues = [0,"",[],{},"hello",5,null,undefined]
+console.log(truthyvalue(mixedvalues));
+
+//retrun name
+
+    function displayname(firstname, lastname, nickname){
+        if(firstname && lastname ){
+            return `${firstname} ${lastname}`
+        }
+        if (firstName) {
+        return firstName;
+    }
+
+    if (nickname) {
+        return nickname;
+    }
+
+    return "Anonymous";
+
+
+    }
+    console.log(displayname("Janani", "S", "Janu"))
+
+ 
+function varloop (){
+    for(var i=0;i<3;i++){
+        setTimeout(value => {
+            console.log(i);
+            
+        }, 1000);
+    }
+}
+varloop();
+
+function letloop (){
+    for(let i=0;i<3;i++){
+        setTimeout(value => {
+            console.log(i);
+            
+        }, 1000);
+    }
+}
+letloop();
+
+function modify (){
+
+    var a = 10;
+    a = 20;
+
+    let b = 30;
+    b = 40;
+
+    const c = 50;
+    //c = 50;
+    //Cannot be reassigned
+
+    const data = {name:"Janu",age:22}
+    person.name = "Janani"
+
+}
+
+
+
+
+
+</script>

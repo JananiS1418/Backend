@@ -1,0 +1,80 @@
+<script>
+    let arr = [23,66,90]
+    arr.shift()
+    console.log(arr);
+    
+
+    let array = [1,2,3,4,5]
+    array.pop()
+    array.push(6)
+    console.log(array);
+
+    let elements = [2,3,4,5,6,7]
+    elements.splice(2,2)
+    console.log(elements);
+    
+
+    let even  = [1,2,3,4,5,6,7,8,9]
+    let evennumbers = even.filter((items)=>items%2 === 0)
+    console.log(evennumbers);
+
+    //square each number
+    const values = [1,2,3,4,5,6,7,8]
+    const squaredvalues = values.map(e=>e*e)
+    console.log(squaredvalues);
+    
+    let products = [23,56,78,32,98]
+    let filter  = products.filter(items=>items>=50)
+    console.log(filter);
+    
+    const string = "abbccc"
+    const count = string.split("").reduce((acc,value)=>{
+     acc[value] = (acc[value] || 0)+1
+     return acc
+    },{})
+    console.log(count);
+
+    // const   rectangle = {
+    //     length : 5,
+    //     width : 2}
+    //     // console.log(rectangle)
+
+        const area  = (a,b)=>{
+            console.log(a*b);
+            
+        }
+        area(6,7)
+
+        const perimeter = (a,b)=>{
+            console.log(2*(a+b));
+            
+        }
+        perimeter(8,9)
+
+        const price = [23,45,78,94,75]
+        const GST = 23
+
+        const add = price.map(price=>price+(price*GST/100) )
+        console.log(add);
+        
+        
+    const salary = [20000,60000,30000]
+    const reduce = salary.reduce((acc,value)=>acc+value,0)
+    console.log(reduce);
+    
+    //Which array method returns a new array always?
+      //map ()is return a new array
+    
+    //Which method can return a single value from an array?
+    // reduce() return a single value from an array
+
+    //Is forEach a higher-order function?
+    //yes forEach() is a higher order function
+
+    //Can map() modify the original array?
+    // no ,it returns new array cannot modify original array
+
+    //Which method is best for searching condition-based data?
+    // find() is used for condition based data
+
+</script>

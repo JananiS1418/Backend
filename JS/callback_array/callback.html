@@ -1,0 +1,47 @@
+<script>
+    const callback= (data,task)=>{
+         task()
+        console.log("Task Completed");
+        
+      
+    }
+
+    callback("Janu",()=>{
+        console.log("name","Janu");
+        
+    })
+
+//age eligibility
+    const checkage = (age,eligibility)=>{
+          console.log(age);
+          eligibility()
+          
+    }
+    checkage(17,(age)=>{
+        if(age>=18){
+            console.log("Eligibility");
+            
+        }else{
+            console.log("Not eligibility");
+            
+        }
+    })
+
+    const callapi = (call,successful)=>{
+           console.log(call);
+           setTimeout(() => {
+            console.log("API called");
+            successful()
+           }, 1000);
+                      
+    }
+    callapi("Call API",()=>{
+        console.log("Successfully Finished");
+        
+    })
+
+    
+    
+
+
+</script>

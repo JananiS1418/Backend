@@ -1,0 +1,58 @@
+ <script>
+    
+    const getData = (callback)=>{
+        setTimeout(()=>{
+            console.log("Print the Message");
+            
+
+        },1000)
+    }
+
+    getData((message)=>{
+        console.log(message);
+        
+
+    })
+
+
+    const calculate = (a,b,call)=>{
+         setTimeout(()=>{
+            console.log(a+b);
+            
+         },1000)
+    }
+    calculate(5,3,(add)=>{
+        console.log(add);
+        
+    })
+
+    const first  = (datas)=>{
+        setTimeout(()=>{
+            console.log("First message");
+            datas("data first")
+        },1000)
+    }
+
+    const second = (datas)=>{
+        setTimeout(()=>{
+            console.log("Second Message");
+            datas("data second")
+            
+        },2000)
+
+    }
+
+    first((data)=>{
+        console.log(data);
+        
+        second((data1)=>{
+          console.log(data1);
+          
+        })
+    })
+
+    
+
+
+
+ </script>

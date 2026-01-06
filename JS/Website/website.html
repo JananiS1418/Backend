@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Ultimate Manual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div>
+                        <h1>JS<span class="highlight">Ultimate</span></h1>
+                        <p>Master the Web</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-controls">
+                <div class="theme-toggle">
+                    <span id="themeLabel">Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        <!-- SIDEBAR NAVIGATION -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Table of Contents</h3>
+                <button class="collapse-btn" id="collapseBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <div class="nav-group active">
+                <div class="nav-header">
+                    <i class="fas fa-rocket"></i>
+                    <span>01. Fundamentals</span>
+                </div>
+                <a href="#intro" class="nav-link">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Introduction</span>
+                </a>
+                <a href="#variables" class="nav-link">
+                    <i class="fas fa-box"></i>
+                    <span>Variables</span>
+                </a>
+                <a href="#datatypes" class="nav-link">
+                    <i class="fas fa-dna"></i>
+                    <span>Data Types</span>
+                </a>
+                <a href="#operators" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>Operators</span>
+                </a>
+                <a href="#conversions" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Type Conversions</span>
+                </a>
+                <a href="#hoisting" class="nav-link">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Hoisting</span>
+                </a>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-header">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>02. Logic & Control</span>
+                </div>
+                <a href="#conditions" class="nav-link">
+                    <i class="fas fa-code-branch"></i>
+                    <span>Conditions</span>
+                </a>
+                <a href="#loops" class="nav-link">
+                    <i class="fas fa-redo"></i>
+                    <span>Loops</span>
+                </a>
+                <a href="#functions" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Functions</span>
+                </a>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-header">
+                    <i class="fas fa-layer-group"></i>
+                    <span>03. Data Structures</span>
+                </div>
+                <a href="#arrays" class="nav-link">
+                    <i class="fas fa-list"></i>
+                    <span>Array Methods</span>
+                </a>
+                <a href="#strings" class="nav-link">
+                    <i class="fas fa-font"></i>
+                    <span>String Methods</span>
+                </a>
+                <a href="#objects" class="nav-link">
+                    <i class="fas fa-cube"></i>
+                    <span>Objects</span>
+                </a>
+                <a href="#classes" class="nav-link">
+                    <i class="fas fa-shapes"></i>
+                    <span>Classes (OOP)</span>
+                </a>
+                <a href="#mapsets" class="nav-link">
+                    <i class="fas fa-map"></i>
+                    <span>Map & Set</span>
+                </a>
+                <a href="#json" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>JSON</span>
+                </a>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-header">
+                    <i class="fas fa-globe"></i>
+                    <span>04. The Web (DOM)</span>
+                </div>
+                <a href="#dom" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>DOM Deep Dive</span>
+                </a>
+                <a href="#events" class="nav-link">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span>Events</span>
+                </a>
+                <a href="#storage" class="nav-link">
+                    <i class="fas fa-database"></i>
+                    <span>Web Storage</span>
+                </a>
+                <a href="#apis" class="nav-link">
+                    <i class="fas fa-plug"></i>
+                    <span>APIs</span>
+                </a>
+                <a href="#cookies" class="nav-link">
+                    <i class="fas fa-cookie"></i>
+                    <span>Cookies</span>
+                </a>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-header">
+                    <i class="fas fa-bolt"></i>
+                    <span>05. Advanced ES6+</span>
+                </div>
+                <a href="#es6" class="nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>ES6 Features</span>
+                </a>
+                <a href="#async" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>Async/Await</span>
+                </a>
+                <a href="#fetch" class="nav-link">
+                    <i class="fas fa-wifi"></i>
+                    <span>Fetch API</span>
+                </a>
+                <a href="#modules" class="nav-link">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <span>Modules</span>
+                </a>
+                <a href="#iterators" class="nav-link">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Iterators</span>
+                </a>
+                <a href="#proxies" class="nav-link">
+                    <i class="fas fa-mask"></i>
+                    <span>Proxies</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="progress-container">
+                    <div class="progress-label">Learning Progress</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="learningProgress"></div>
+                    </div>
+                    <div class="progress-text">0% Complete</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <!-- INTRO -->
+            <section id="intro" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-rocket"></i></span>
+                        Introduction to JavaScript
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 5 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    JavaScript is a versatile, high-level programming language that powers interactive behavior on
+                    websites.
+                    It's the third layer of standard web technologies alongside HTML and CSS.
+                </p>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Key Insight</h3>
+                    </div>
+                    <p>JavaScript was created in just 10 days by Brendan Eich in 1995 while working at Netscape.</p>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>இணையதளத்தின் உயிர்.</strong><br>
+                        HTML என்பது எலும்புக்கூடு (Skeleton). CSS என்பது தோல் (Skin). JavaScript என்பது மூளை (Brain)
+                        மற்றும் உயிர் (Soul). ஒரு பட்டனை அழுத்தினால் என்ன நடக்க வேண்டும் என்பதை JS தான் தீர்மானிக்கிறது.
+                    </div>
+                </div>
+
+                <div class="code-comparison">
+                    <div class="comparison-header">
+                        <span>JavaScript in Action</span>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="code-example">
+                            <div class="code-header">Without JavaScript</div>
+                            <pre><code>&lt;button&gt;Click Me&lt;/button&gt;
+<span class="com">// Nothing happens when clicked</span></code></pre>
+                        </div>
+                        <div class="code-example">
+                            <div class="code-header">With JavaScript</div>
+                            <pre><code>&lt;button onclick="alert('Hello!')"&gt;
+    Click Me
+&lt;/button&gt;
+<span class="com">// Shows alert when clicked</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VARIABLES -->
+            <section id="variables" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-box"></i></span>
+                        Variables & Scope
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 8 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Variables are containers for storing data values. JavaScript uses three keywords to declare
+                    variables:
+                    <code>var</code>, <code>let</code>, and <code>const</code>.
+                </p>
+
+                <div class="grid-3">
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-unlock"></i> var</h3>
+                            <span class="badge legacy">Legacy</span>
+                        </div>
+                        <p>Function-scoped, can be redeclared and updated.</p>
+                        <pre><code><span class="kwd">var</span> name = "John";
+<span class="kwd">var</span> name = "Jane"; <span class="com">// ✅ Allowed</span></code></pre>
+                        <div class="card-footer">
+                            <span class="warning"><i class="fas fa-exclamation-triangle"></i> Avoid in modern
+                                code</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card highlight">
+                        <div class="card-header">
+                            <h3><i class="fas fa-edit"></i> let</h3>
+                            <span class="badge recommended">Recommended</span>
+                        </div>
+                        <p>Block-scoped, can be updated but not redeclared.</p>
+                        <pre><code><span class="kwd">let</span> age = 25;
+age = 26; <span class="com">// ✅ Allowed</span>
+<span class="kwd">let</span> age = 27; <span class="com">// ❌ Error</span></code></pre>
+                        <div class="card-footer">
+                            <span class="tip"><i class="fas fa-check-circle"></i> Use for variables that change</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-lock"></i> const</h3>
+                            <span class="badge recommended">Recommended</span>
+                        </div>
+                        <p>Block-scoped, cannot be updated or redeclared.</p>
+                        <pre><code><span class="kwd">const</span> PI = 3.14;
+PI = 3.15; <span class="com">// ❌ Error</span></code></pre>
+                        <div class="card-footer">
+                            <span class="tip"><i class="fas fa-check-circle"></i> Use for values that won't
+                                change</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DATA TYPES -->
+            <section id="datatypes" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-dna"></i></span>
+                        Data Types
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    JavaScript has dynamic types: the same variable can hold different data types.
+                    There are 7 primitive data types and 1 non-primitive (object).
+                </p>
+
+                <div class="data-types-container">
+                    <div class="data-type-category">
+                        <h3><i class="fas fa-star"></i> Primitive Types (Immutable)</h3>
+                        <div class="type-grid">
+                            <div class="type-card">
+                                <div class="type-icon string">S</div>
+                                <div class="type-info">
+                                    <h4>String</h4>
+                                    <p>Text data</p>
+                                    <code>"Hello", 'World', `Template`</code>
+                                </div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-icon number">N</div>
+                                <div class="type-info">
+                                    <h4>Number</h4>
+                                    <p>Integer or floating point</p>
+                                    <code>42, 3.14, -5</code>
+                                </div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-icon boolean">B</div>
+                                <div class="type-info">
+                                    <h4>Boolean</h4>
+                                    <p>Logical true/false</p>
+                                    <code>true, false</code>
+                                </div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-icon null">Ø</div>
+                                <div class="type-info">
+                                    <h4>Null</h4>
+                                    <p>Intentional empty value</p>
+                                    <code>null</code>
+                                </div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-icon undefined">U</div>
+                                <div class="type-info">
+                                    <h4>Undefined</h4>
+                                    <p>Variable not assigned</p>
+                                    <code>undefined</code>
+                                </div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-icon symbol">Σ</div>
+                                <div class="type-info">
+                                    <h4>Symbol</h4>
+                                    <p>Unique identifier</p>
+                                    <code>Symbol('id')</code>
+                                </div>
+                            </div>
+                            <div class="type-card">
+                                <div class="type-icon bigint">B</div>
+                                <div class="type-info">
+                                    <h4>BigInt</h4>
+                                    <p>Large integers</p>
+                                    <code>12345678901234567890n</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="data-type-category">
+                        <h3><i class="fas fa-cube"></i> Non-Primitive Types (Mutable)</h3>
+                        <div class="type-grid">
+                            <div class="type-card object">
+                                <div class="type-icon object">O</div>
+                                <div class="type-info">
+                                    <h4>Object</h4>
+                                    <p>Key-value collections</p>
+                                    <code>{name: "John", age: 30}</code>
+                                </div>
+                            </div>
+                            <div class="type-card object">
+                                <div class="type-icon array">A</div>
+                                <div class="type-info">
+                                    <h4>Array</h4>
+                                    <p>Ordered lists</p>
+                                    <code>[1, 2, 3, 4, 5]</code>
+                                </div>
+                            </div>
+                            <div class="type-card object">
+                                <div class="type-icon function">F</div>
+                                <div class="type-info">
+                                    <h4>Function</h4>
+                                    <p>Callable objects</p>
+                                    <code>function() {}</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-check-demo">
+                    <h3><i class="fas fa-search"></i> Type Checking</h3>
+                    <p>Use <code>typeof</code> operator to check data types:</p>
+                    <div class="code-block">
+                        <pre><code><span class="kwd">typeof</span> "Hello"        <span class="com">// "string"</span>
+<span class="kwd">typeof</span> 42           <span class="com">// "number"</span>
+<span class="kwd">typeof</span> true         <span class="com">// "boolean"</span>
+<span class="kwd">typeof</span> undefined    <span class="com">// "undefined"</span>
+<span class="kwd">typeof</span> null         <span class="com">// "object" (historical bug!)</span>
+<span class="kwd">typeof</span> {name: "John"} <span class="com">// "object"</span>
+<span class="kwd">typeof</span> [1, 2, 3]    <span class="com">// "object" (use Array.isArray)</span>
+<span class="kwd">typeof</span> <span class="kwd">function</span>() {} <span class="com">// "function"</span></code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OPERATORS -->
+            <section id="operators" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-calculator"></i></span>
+                        Operators
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 12 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Operators are symbols that perform operations on variables and values.
+                    JavaScript includes arithmetic, assignment, comparison, logical, and other operators.
+                </p>
+
+                <div class="operators-grid">
+                    <div class="operator-category">
+                        <h3><i class="fas fa-plus-circle"></i> Arithmetic Operators</h3>
+                        <div class="operator-table">
+                            <div class="operator-row">
+                                <span class="operator-symbol">+</span>
+                                <span class="operator-name">Addition</span>
+                                <code>5 + 2 = 7</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">-</span>
+                                <span class="operator-name">Subtraction</span>
+                                <code>5 - 2 = 3</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">*</span>
+                                <span class="operator-name">Multiplication</span>
+                                <code>5 * 2 = 10</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">/</span>
+                                <span class="operator-name">Division</span>
+                                <code>5 / 2 = 2.5</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">%</span>
+                                <span class="operator-name">Modulus</span>
+                                <code>5 % 2 = 1</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">**</span>
+                                <span class="operator-name">Exponentiation</span>
+                                <code>5 ** 2 = 25</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="operator-category">
+                        <h3><i class="fas fa-equals"></i> Assignment Operators</h3>
+                        <div class="operator-table">
+                            <div class="operator-row">
+                                <span class="operator-symbol">=</span>
+                                <span class="operator-name">Assignment</span>
+                                <code>x = 5</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">+=</span>
+                                <span class="operator-name">Add and assign</span>
+                                <code>x += 3 // x = x + 3</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">-=</span>
+                                <span class="operator-name">Subtract and assign</span>
+                                <code>x -= 3 // x = x - 3</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">*=</span>
+                                <span class="operator-name">Multiply and assign</span>
+                                <code>x *= 3 // x = x * 3</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">/=</span>
+                                <span class="operator-name">Divide and assign</span>
+                                <code>x /= 3 // x = x / 3</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">%=</span>
+                                <span class="operator-name">Modulus and assign</span>
+                                <code>x %= 3 // x = x % 3</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="operator-category">
+                        <h3><i class="fas fa-balance-scale"></i> Comparison Operators</h3>
+                        <div class="operator-table">
+                            <div class="operator-row">
+                                <span class="operator-symbol">==</span>
+                                <span class="operator-name">Equal to (value)</span>
+                                <code>5 == "5" // true</code>
+                            </div>
+                            <div class="operator-row highlight">
+                                <span class="operator-symbol">===</span>
+                                <span class="operator-name">Strict equal</span>
+                                <code>5 === "5" // false</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">!=</span>
+                                <span class="operator-name">Not equal</span>
+                                <code>5 != "5" // false</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">!==</span>
+                                <span class="operator-name">Strict not equal</span>
+                                <code>5 !== "5" // true</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">></span>
+                                <span class="operator-name">Greater than</span>
+                                <code>5 > 3 // true</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">
+                                    < </span>
+                                        <span class="operator-name">Less than</span>
+                                        <code>5 < 3 // false</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="operator-category">
+                        <h3><i class="fas fa-sitemap"></i> Logical Operators</h3>
+                        <div class="operator-table">
+                            <div class="operator-row">
+                                <span class="operator-symbol">&&</span>
+                                <span class="operator-name">AND</span>
+                                <code>true && false // false</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">||</span>
+                                <span class="operator-name">OR</span>
+                                <code>true || false // true</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">!</span>
+                                <span class="operator-name">NOT</span>
+                                <code>!true // false</code>
+                            </div>
+                            <div class="operator-row">
+                                <span class="operator-symbol">??</span>
+                                <span class="operator-name">Nullish Coalescing</span>
+                                <code>null ?? "default" // "default"</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Comparison</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>== vs === வேறுபாடு:</strong><br>
+                        <code>==</code> என்பது வெறும் மதிப்பை மட்டும் சரிபார்க்கும். <code>"5"</code> மற்றும்
+                        <code>5</code> ஒன்றாகும்.<br>
+                        <code>===</code> என்பது மதிப்பு மற்றும் வகை இரண்டையும் சரிபார்க்கும். <code>"5"</code> (சரம்)
+                        மற்றும் <code>5</code> (எண்) வெவ்வேறு.
+                    </div>
+                </div>
+            </section>
+
+            <!-- TYPE CONVERSIONS -->
+            <section id="conversions" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-exchange-alt"></i></span>
+                        Type Conversions
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 8 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    JavaScript can convert values from one type to another automatically (implicit conversion)
+                    or manually (explicit conversion).
+                </p>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-magic"></i> Implicit Conversion</h3>
+                        <p>Automatic type conversion by JavaScript</p>
+                        <div class="code-block">
+                            <pre><code>"5" + 2      <span class="com">// "52" (string concatenation)</span>
+"5" - 2      <span class="com">// 3 (string to number)</span>
+"5" * "2"    <span class="com">// 10 (both strings to numbers)</span>
+true + false <span class="com">// 1 (booleans to numbers)</span>
+5 + null     <span class="com">// 5 (null becomes 0)</span>
+"5" + null   <span class="com">// "5null" (null becomes "null")</span></code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-wrench"></i> Explicit Conversion</h3>
+                        <p>Manual type conversion by developer</p>
+                        <div class="code-block">
+                            <pre><code><span class="kwd">String</span>(123)        <span class="com">// "123"</span>
+<span class="kwd">Number</span>("123")      <span class="com">// 123</span>
+<span class="kwd">Boolean</span>(1)         <span class="com">// true</span>
+<span class="kwd">parseInt</span>("10px")   <span class="com">// 10</span>
+<span class="kwd">parseFloat</span>("3.14") <span class="com">// 3.14</span>
++ "123"             <span class="com">// 123 (unary plus)</span>
+!!1                 <span class="com">// true (double NOT)</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>தானாகவே மாற்றுதல் vs நாம் மாற்றுதல்:</strong><br>
+                        JavaScript சில நேரங்களில் தானாகவே மதிப்புகளை மாற்றும் (Implicit).
+                        எடுத்துக்காட்டாக: <code>"5" + 2 = "52"</code><br>
+                        நாம் குறிப்பாக மாற்ற வேண்டும் என்றால் (Explicit): <code>Number("5") + 2 = 7</code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HOISTING -->
+            <section id="hoisting" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-arrow-up"></i></span>
+                        Hoisting
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Hoisting is JavaScript's behavior of moving declarations to the top of their scope
+                    before code execution.
+                </p>
+
+                <div class="grid-3">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-arrow-up"></i> var Hoisting</h3>
+                        <p>Variables are hoisted and initialized with <code>undefined</code></p>
+                        <div class="code-block">
+                            <pre><code>console.log(x); <span class="com">// undefined</span>
+<span class="kwd">var</span> x = 5;</code></pre>
+                        </div>
+                        <p class="tip"><i class="fas fa-info-circle"></i> Declaration is hoisted, assignment stays</p>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> let/const Hoisting</h3>
+                        <p>Variables are hoisted but not initialized (Temporal Dead Zone)</p>
+                        <div class="code-block">
+                            <pre><code>console.log(y); <span class="com">// ❌ Error</span>
+<span class="kwd">let</span> y = 5;</code></pre>
+                        </div>
+                        <p class="warning"><i class="fas fa-exclamation-circle"></i> Cannot access before declaration
+                        </p>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-function"></i> Function Hoisting</h3>
+                        <p>Function declarations are fully hoisted</p>
+                        <div class="code-block">
+                            <pre><code>sayHello(); <span class="com">// ✅ "Hello!"</span>
+<span class="kwd">function</span> sayHello() {
+    console.log("Hello!");
+}</code></pre>
+                        </div>
+                        <p class="tip"><i class="fas fa-check-circle"></i> Can call before declaration</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONDITIONS -->
+            <section id="conditions" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-code-branch"></i></span>
+                        Conditions
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 15 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Conditional statements control the flow of execution based on different conditions.
+                </p>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-code-branch"></i> If / Else</h3>
+                        <p>Execute code if a condition is true</p>
+                        <div class="code-block">
+                            <pre><code>if (hour < 12) {
+    console.log("Good morning");
+} else if (hour < 18) {
+    console.log("Good afternoon");
+} else {
+    console.log("Good evening");
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-toggle-on"></i> Switch</h3>
+                        <p>Select one of many blocks to be executed</p>
+                        <div class="code-block">
+                            <pre><code>switch (day) {
+    case 0:
+        text = "Sunday";
+        break;
+    case 6:
+        text = "Saturday";
+        break;
+    default:
+        text = "Weekday";
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-question-circle"></i> Ternary Operator</h3>
+                    <p>Short hand for if/else</p>
+                    <div class="code-block">
+                        <pre><code>let status = (age >= 18) ? "Adult" : "Minor";</code></pre>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>If/Else:</strong> "மழை பெய்தால் குடை எடு, இல்லையென்றால் சும்மா போ" போன்றது.<br>
+                        <strong>Switch:</strong> டிவி ரிமோட் போல - 1 அழுத்தினால் Sun TV, 2 அழுத்தினால் KTV.<br>
+                        <strong>Ternary:</strong> ஒரே வரி if/else. "பாஸ் அல்லது ஃபெயில்?" என்பதை ஒரே வரியில் சொல்லலாம்.
+                    </div>
+                </div>
+            </section>
+
+            <!-- LOOPS -->
+            <section id="loops" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-redo"></i></span>
+                        Loops
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 12 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Loops can execute a block of code a number of times.
+                </p>
+
+                <div class="grid-3">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-sync"></i> For Loop</h3>
+                        <p>Loop a specific number of times</p>
+                        <div class="code-block">
+                            <pre><code>for (let i = 0; i < 5; i++) {
+    console.log(i);
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-circle-notch"></i> While Loop</h3>
+                        <p>Loop while a condition is true</p>
+                        <div class="code-block">
+                            <pre><code>while (i < 10) {
+    console.log(i);
+    i++;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-list-ol"></i> For...of</h3>
+                        <p>Loop through values of an iterable</p>
+                        <div class="code-block">
+                            <pre><code>let cars = ["BMW", "Volvo"];
+for (let car of cars) {
+    console.log(car);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>For Loop:</strong> "5 முறை தோப்புக்கரணம் போடு" என்று சொல்வது போல.<br>
+                        <strong>While Loop:</strong> "மழை நிற்கும் வரை காத்திரு" - எப்போது நிற்கும் என்று தெரியாது,<br>
+                        <strong>For...of:</strong> ஒரு கூடையில் உள்ள ஒவ்வொரு பழத்தையும் எடுத்து வைப்பது போல.
+                    </div>
+                </div>
+            </section>
+
+            <!-- FUNCTIONS -->
+            <section id="functions" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-cogs"></i></span>
+                        Functions
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 15 min</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    A block of code designed to perform a particular task.
+                </p>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-scroll"></i> Function Declaration</h3>
+                        <div class="code-block">
+                            <pre><code>function add(a, b) {
+    return a + b;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-location-arrow"></i> Arrow Function</h3>
+                        <div class="code-block">
+                            <pre><code>const add = (a, b) => a + b;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Function:</strong> ஒரு மிக்ஸி போல. உள்ளே எதையாவது போட்டால் (Input), அது அரைத்து ஜூஸாக
+                        (Output) தரும்.<br>
+                        <strong>Arrow Function:</strong> இது ஒரு "Short-cut". பெரிய பார்முலா எழுதாமல், சிம்பிளாக எழுத
+                        உதவும் வழி.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ARRAYS -->
+            <section id="arrays" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-list"></i></span>
+                        Arrays & Methods
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 20 min</span>
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-plus-circle"></i> Basic Methods</h3>
+                        <div class="code-block">
+                            <pre><code>let fruits = ["Apple", "Banana"];
+fruits.push("Orange"); // Add end
+fruits.pop();          // Remove end
+fruits.shift();        // Remove start
+fruits.unshift("Kiwi");// Add start</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-filter"></i> Filter & Map</h3>
+                        <div class="code-block">
+                            <pre><code>let ages = [10, 20, 30];
+// Filter over 18
+let adults = ages.filter(a => a > 18);
+
+// Multiply by 2
+let double = ages.map(a => a * 2);</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-compress-arrows-alt"></i> Reduce</h3>
+                        <div class="code-block">
+                            <pre><code>let nums = [1, 2, 3];
+// Sum of all
+let sum = nums.reduce((t, n) => t + n);
+// Result: 6</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Array:</strong> ஒரு ரயிலின் பெட்டிகள் போல. ஒவ்வொன்றிலும் பொருள்.<br>
+                        <strong>Map:</strong> எல்லா பெட்டியிலும் பெயிண்ட் அடிப்பது போல.<br>
+                        <strong>Filter:</strong> டிக்கெட் இல்லாதவர்களை இறக்குவது போல.<br>
+                        <strong>Reduce:</strong> எல்லா பயணிகளின் எடையையும் கூட்டுவது போல.
+                    </div>
+                </div>
+            </section>
+
+            <!-- STRINGS -->
+            <section id="strings" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-font"></i></span>
+                        Strings
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-cut"></i> Common Methods</h3>
+                        <div class="code-block">
+                            <pre><code>let str = "Hello World";
+str.length;           // 11
+str.toUpperCase();    // "HELLO WORLD"
+str.indexOf("World"); // 6
+str.slice(0, 5);      // "Hello"</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-pencil-alt"></i> Template Literals</h3>
+                        <div class="code-block">
+                            <pre><code>let name = "John";
+// Use backticks
+let msg = `Hello ${name}!`;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OBJECTS -->
+            <section id="objects" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-cube"></i></span>
+                        Objects
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 15 min read</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Objects are variables too. But objects can contain many values.
+                </p>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-sitemap"></i> Object Structure</h3>
+                    <div class="code-block">
+                        <pre><code>const car = {
+    type: "Fiat",
+    model: "500",
+    color: "white",
+    start: function() {
+        return this.type + " started";
+    }
+};
+
+console.log(car.model); // "500"</code></pre>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Object:</strong> ஒரு மனிதன் போல. அவனுக்கு பெயர் (property), வயது (property), மற்றும்
+                        நடக்க முடியும் (method), பேச முடியும் (method).<br>
+                        <strong>this:</strong> "நான்" அல்லது "எனது" என்று சொல்வது போல.
+                    </div>
+                </div>
+            </section>
+
+            <!-- CLASSES -->
+            <section id="classes" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-shapes"></i></span>
+                        Classes (OOP)
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 15 min read</span>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-drafting-compass"></i> Class Syntax</h3>
+                    <div class="code-block">
+                        <pre><code>class Car {
+    constructor(name) {
+        this.brand = name;
+    }
+    
+    present() {
+        return 'I have a ' + this.brand;
+    }
+}
+
+let myCar = new Car("Ford");</code></pre>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Class:</strong> இது ஒரு "அச்சு" (Mold) அல்லது "வரைபடம்" (Blueprint) போல. இதை வைத்து
+                        எத்தனை இட்லி (Object) வேண்டுமானாலும் சுடலாம். வரைபடம் ஒன்றுதான், ஆனால் கட்டப்படும் வீடுகள்
+                        தனித்தனி.
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAP & SET -->
+            <section id="mapsets" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-map"></i></span>
+                        Map & Set
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-map-marked-alt"></i> Map</h3>
+                        <p>Key-Value pairs (Keys can be any type)</p>
+                        <div class="code-block">
+                            <pre><code>const fruits = new Map();
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+
+fruits.get("apples"); // 500</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-layer-group"></i> Set</h3>
+                        <p>Unique values only</p>
+                        <div class="code-block">
+                            <pre><code>const letters = new Set();
+letters.add("a");
+letters.add("b");
+letters.add("a"); // Ignored
+
+// Size is 2</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JSON -->
+            <section id="json" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-code"></i></span>
+                        JSON
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-exchange-alt"></i> Handling JSON</h3>
+                    <div class="code-block">
+                        <pre><code>let text = '{ "name":"John", "age":30 }';
+// Parse TO Object
+let obj = JSON.parse(text);
+
+// Stringify TO String
+let str = JSON.stringify(obj);</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOM -->
+            <section id="dom" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-code"></i></span>
+                        DOM Deep Dive
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 20 min read</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    The Document Object Model (DOM) is an interface to change the content, style, and structure of the
+                    document.
+                </p>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-bullseye"></i> Selecting Elements</h3>
+                        <div class="code-block">
+                            <pre><code>// By ID
+let el = document.getElementById("demo");
+
+// By Query - CSS Selector
+let els = document.querySelectorAll(".myClass");</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-edit"></i> Changing Content</h3>
+                        <div class="code-block">
+                            <pre><code>// Change HTML
+el.innerHTML = "Hello <b>World</b>";
+
+// Change Style
+el.style.color = "red";
+el.style.display = "none";</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>DOM:</strong> ஒரு வீட்டின் வரைபடம் (Plan) போல. இந்த Plan-ஐ வைத்து சுவரை இடிக்கலாம்
+                        (Change Content), பெயிண்ட் அடிக்கலாம் (Style), அல்லது புது அறை கட்டலாம் (Create Element).
+                        எல்லாம் JavaScript என்ற இன்ஜினியர் கையில்!
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVENTS -->
+            <section id="events" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-mouse-pointer"></i></span>
+                        Events
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-bolt"></i> Event Listeners</h3>
+                    <p>React to user actions like clicks, mouse moves, keys.</p>
+                    <div class="code-block">
+                        <pre><code>let btn = document.getElementById("myBtn");
+
+btn.addEventListener("click", function() {
+    alert("Button Clicked!");
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Events:</strong> காத்துக்கொண்டிருத்தல். "வாசல் மணி அடித்தால் கதவை திற" என்பது போல.
+                        Button-ஐ Click செய்தால் (மணி அடித்தால்), Function வேலை செய்யும் (கதவு திறக்கும்).
+                    </div>
+                </div>
+            </section>
+
+            <!-- WEB STORAGE -->
+            <section id="storage" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-database"></i></span>
+                        Web Storage
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 8 min read</span>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-hdd"></i> Local Storage</h3>
+                        <p>Persists even after browser closes</p>
+                        <div class="code-block">
+                            <pre><code>localStorage.setItem("name", "John");
+let n = localStorage.getItem("name");
+localStorage.removeItem("name");</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-memory"></i> Session Storage</h3>
+                        <p>Lost when tab is closed</p>
+                        <div class="code-block">
+                            <pre><code>sessionStorage.setItem("id", "123");</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Local Storage:</strong> பையில் போட்டு வைப்பது போல. நாம் எடுக்கும் வரை அங்கேயே இருக்கும்.
+                        <br><strong>Session Storage:</strong> கையில் வைத்திருப்பது போல. கையை கழுவினால் (Tab Close)
+                        போய்விடும்.
+                    </div>
+                </div>
+            </section>
+
+            <!-- APIS -->
+            <section id="apis" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-plug"></i></span>
+                        Web APIs
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Application Programming Interfaces provided by the browser.
+                </p>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Geolocation Example</h3>
+                    <div class="code-block">
+                        <pre><code>navigator.geolocation.getCurrentPosition(pos => {
+    let lat = pos.coords.latitude;
+    let long = pos.coords.longitude;
+});</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COOKIES -->
+            <section id="cookies" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-cookie"></i></span>
+                        Cookies
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-cookie-bite"></i> Managing Cookies</h3>
+                    <div class="code-block">
+                        <pre><code>// Set Cookie
+document.cookie = "username=John; expires=Thu, 18 Dec 2024 12:00:00 UTC";
+
+// Read Cookie
+let x = document.cookie;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ES6 FEATURES -->
+            <section id="es6" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-star"></i></span>
+                        ES6+ Features
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-expand-arrows-alt"></i> Destructuring</h3>
+                        <div class="code-block">
+                            <pre><code>// Arrays
+let [x, y] = [10, 20];
+
+// Objects
+let {name, age} = user;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-ellipsis-h"></i> Spread Operator</h3>
+                        <div class="code-block">
+                            <pre><code>let nums = [1, 2];
+let all = [...nums, 3, 4]; // [1, 2, 3, 4]
+
+let obj1 = {a: 1};
+let obj2 = {...obj1, b: 2}; // {a: 1, b: 2}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ASYNC/AWAIT -->
+            <section id="async" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-clock"></i></span>
+                        Async / Await
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 20 min read</span>
+                    </div>
+                </div>
+
+                <p class="desc">
+                    Asynchronous programming allows long-running operations (like I/O) to run without blocking the
+                    execution thread.
+                </p>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-handshake"></i> Promise</h3>
+                    <p>An object representing the eventual completion or failure of an async operation.</p>
+                    <div class="code-block">
+                        <pre><code>let myPromise = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        resolve("Success!");
+    }, 1000);
+});
+
+myPromise.then(function(value) {
+    console.log(value);
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-magic"></i> Async/Await</h3>
+                    <p>Syntactic sugar for Promises. Makes async code look synchronous.</p>
+                    <div class="code-block">
+                        <pre><code>async function myFunc() {
+    let response = await myPromise;
+    console.log(response);
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Sync vs Async:</strong>
+                        <br><strong>Sync:</strong> ஓட்டலில் வரிசையில் நின்று பில் கட்டுவது. ஒருவர் முடித்த பின் தான்
+                        அடுத்தவர்.
+                        <br><strong>Async:</strong> ஓட்டலில் ஆர்டர் கொடுத்துவிட்டு காத்திருப்பது. ஆர்டர் வரும் வரை
+                        நீங்கள் போன் பார்க்கலாம் (வேறு வேலை செய்யலாம்). உணவு தயாரானதும் (Promise Resolved), சாப்பிடலாம்.
+                    </div>
+                </div>
+            </section>
+
+            <!-- FETCH API -->
+            <section id="fetch" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-wifi"></i></span>
+                        Fetch API
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-download"></i> Making Requests</h3>
+                    <div class="code-block">
+                        <pre><code>fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));</code></pre>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-upload"></i> Async Fetch</h3>
+                    <div class="code-block">
+                        <pre><code>async function getData() {
+    try {
+        const response = await fetch('url');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULES -->
+            <section id="modules" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-puzzle-piece"></i></span>
+                        Modules
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 8 min read</span>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-file-export"></i> Export</h3>
+                        <div class="code-block">
+                            <pre><code>// lib.js
+export const name = "Jesse";
+export function hello() {
+    return "Hello";
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3><i class="fas fa-file-import"></i> Import</h3>
+                        <div class="code-block">
+                            <pre><code>// main.js
+import { name, hello } from "./lib.js";</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ITERATORS -->
+            <section id="iterators" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-sync-alt"></i></span>
+                        Iterators & Generators
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 15 min read</span>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-random"></i> Generators</h3>
+                    <p>Functions that can be paused and resumed.</p>
+                    <div class="code-block">
+                        <pre><code>function* idMaker() {
+    let index = 0;
+    while (true)
+        yield index++;
+}
+
+let gen = idMaker();
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROXIES -->
+            <section id="proxies" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="icon"><i class="fas fa-mask"></i></span>
+                        Proxies
+                    </h1>
+                    <div class="section-meta">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="time-estimate"><i class="far fa-clock"></i> 15 min read</span>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-user-secret"></i> Proxy Object</h3>
+                    <p>Wrap an object to intercept operations.</p>
+                    <div class="code-block">
+                        <pre><code>const handler = {
+    get: function(obj, prop) {
+        return prop in obj ? obj[prop] : "Not found";
+    }
+};
+
+const p = new Proxy({}, handler);
+p.a = 1;
+console.log(p.a); // 1
+console.log(p.b); // "Not found"</code></pre>
+                    </div>
+                </div>
+
+                <div class="tamil-box">
+                    <div class="analogy-label">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil Explanation</span>
+                    </div>
+                    <div class="tamil-text">
+                        <strong>Proxy:</strong> ஒரு செக்யூரிட்டி கார்டு (Security Guard) போல. வீட்டுக்குள் (Object)
+                        யாராவது போகும்போதோ அல்லது எதையாவது எடுக்கும்போதோ, அவர் சோதனை செய்வார் (Intercept).
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <div class="footer-logo-text">
+                            <h2>JS Ultimate</h2>
+                            <p>Complete JavaScript Reference</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 JS Ultimate Manual. Built with <i class="fas fa-heart"
+                            style="color: var(--accent-secondary);"></i> for developers.</p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

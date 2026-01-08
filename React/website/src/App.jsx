@@ -6,7 +6,7 @@ import './index.css'; // Global styles including Tailwind
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 900); // Default based on screen size
   const [activeSection, setActiveSection] = useState('intro');
   const [completedSections, setCompletedSections] = useState([]);
 
@@ -30,6 +30,19 @@ function App() {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  // Responsive Sidebar: Auto-close on resize if small
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 900) {
+        setSidebarOpen(false);
+      } else {
+        setSidebarOpen(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Learning Progress Logic
   useEffect(() => {
@@ -90,15 +103,29 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button - Shown via CSS on mobile */}
       <button
         className="mobile-menu-btn"
         id="mobileMenuBtn"
         onClick={toggleSidebar}
-        style={{ display: 'none' }} // Hidden by default, shown via CSS media query
+        style={{}} // Style handled by CSS
       >
         <i className={`fas fa-${sidebarOpen ? 'times' : 'bars'}`}></i>
       </button>
+
+      {/* Mobile Backdrop */}
+      {sidebarOpen && window.innerWidth <= 900 && (
+        <div
+          className="sidebar-backdrop"
+          onClick={() => setSidebarOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            zIndex: 899,
+          }}
+        />
+      )}
 
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 

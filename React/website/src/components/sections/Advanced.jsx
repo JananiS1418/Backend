@@ -2,7 +2,6 @@ import React from 'react';
 import SectionHeader from '../common/SectionHeader';
 import GlassCard from '../common/GlassCard';
 import CodeBlock from '../common/CodeBlock';
-import TamilBox from '../common/TamilBox';
 
 const Advanced = () => {
     return (
@@ -54,7 +53,7 @@ const Advanced = () => {
 
                 <GlassCard>
                     <h3><i className="fas fa-magic"></i> Async/Await</h3>
-                    <p>Syntactic sugar for Promises. Makes async code look synchronous.</p>
+                    <p>Syntactic sugar for Promises.</p>
                     <CodeBlock>
                         <pre><code>async function myFunc() {'{'}
                             let response = await myPromise;
@@ -63,11 +62,27 @@ const Advanced = () => {
                     </CodeBlock>
                 </GlassCard>
 
-                <TamilBox>
-                    <strong>Sync vs Async:</strong><br />
-                    <strong>Sync:</strong> ஓட்டலில் வரிசையில் நின்று பில் கட்டுவது. ஒருவர் முடித்த பின் தான் அடுத்தவர்.<br />
-                    <strong>Async:</strong> ஓட்டலில் ஆர்டர் கொடுத்துவிட்டு காத்திருப்பது. ஆர்டர் வரும் வரை நீங்கள் போன் பார்க்கலாம் (வேறு வேலை செய்யலாம்). உணவு தயாரானதும் (Promise Resolved), சாப்பிடலாம்.
-                </TamilBox>
+                <GlassCard className="mt-4">
+                    <h3><i className="fas fa-layer-group"></i> Parallel Execution</h3>
+                    <p>Run multiple promises at the same time.</p>
+                    <CodeBlock>
+                        <pre><code>let p1 = fetch('/user');
+                            let p2 = fetch('/posts');
+
+                            let [user, posts] = await Promise.all([p1, p2]);</code></pre>
+                    </CodeBlock>
+                </GlassCard>
+
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(239, 68, 68, 0.1)', borderLeft: '4px solid #ef4444' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-clock" style={{ color: '#ef4444' }}></i>
+                        <h3 style={{ color: '#ef4444' }}>Sync vs Async Analogy</h3>
+                    </div>
+                    <p>
+                        <strong>Sync:</strong> Like standing in a queue at a fast-food joint. You order, wait for food, take it, then the next person orders.<br />
+                        <strong>Async:</strong> Like a sit-down restaurant. You order and can talk/play on phone while waiting. When food is ready (Promise Resolved), you eat.
+                    </p>
+                </div>
             </section>
 
             {/* FETCH API */}
@@ -85,19 +100,29 @@ const Advanced = () => {
                 </GlassCard>
 
                 <GlassCard>
-                    <h3><i className="fas fa-upload"></i> Async Fetch</h3>
+                    <h3><i className="fas fa-upload"></i> Async Fetch (POST)</h3>
                     <CodeBlock>
-                        <pre><code>async function getData() {'{'}
-                            try {'{'}
-                            const response = await fetch('url');
-                            const data = await response.json();
-                            console.log(data);
-                            {'}'} catch (error) {'{'}
-                            console.error(error);
-                            {'}'}
+                        <pre><code>async function postData() {'{'}
+                            const res = await fetch('url', {'{'}
+                            method: 'POST',
+                            headers: {'{'} 'Content-Type': 'application/json' {'}'},
+                            body: JSON.stringify({'{'} a: 1 {'}'})
+                            {'}'});
+                            const data = await res.json();
                             {'}'}</code></pre>
                     </CodeBlock>
                 </GlassCard>
+
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(59, 130, 246, 0.1)', borderLeft: '4px solid #3b82f6' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-pizza-slice" style={{ color: '#3b82f6' }}></i>
+                        <h3 style={{ color: '#3b82f6' }}>Real World Example</h3>
+                    </div>
+                    <p>
+                        <strong>Fetch</strong> is like ordering a pizza online.
+                        You send a request (Order), wait for the server (Kitchen) to process it, and eventually, you get a response (Pizza) delivered to your door!
+                    </p>
+                </div>
             </section>
 
             {/* MODULES */}
@@ -123,6 +148,17 @@ const Advanced = () => {
                                 import {'{'} name, hello {'}'} from "./lib.js";</code></pre>
                         </CodeBlock>
                     </GlassCard>
+                </div>
+
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(245, 158, 11, 0.1)', borderLeft: '4px solid #f59e0b' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-cubes" style={{ color: '#f59e0b' }}></i>
+                        <h3 style={{ color: '#f59e0b' }}>Modules Analogy</h3>
+                    </div>
+                    <p>
+                        Think of simple code as one giant <strong>LEGO</strong> piece.
+                        <strong>Modules</strong> let you break that giant piece into smaller, reusable LEGO bricks. You can build a car, a house, or a robot using the same bricks (functions/variables) in different combinations!
+                    </p>
                 </div>
             </section>
 
@@ -168,9 +204,16 @@ const Advanced = () => {
                     </CodeBlock>
                 </GlassCard>
 
-                <TamilBox>
-                    <strong>Proxy:</strong> ஒரு செக்யூரிட்டி கார்டு (Security Guard) போல. வீட்டுக்குள் (Object) யாராவது போகும்போதோ அல்லது எதையாவது எடுக்கும்போதோ, அவர் சோதனை செய்வார் (Intercept).
-                </TamilBox>
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(139, 92, 246, 0.1)', borderLeft: '4px solid #8b5cf6' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-shield-alt" style={{ color: '#8b5cf6' }}></i>
+                        <h3 style={{ color: '#8b5cf6' }}>Proxy Explained</h3>
+                    </div>
+                    <p>
+                        A <strong>Proxy</strong> acts like a <strong>Security Guard</strong>.<br />
+                        Before you can access or change anything inside the house (Object), the guard checks if you are allowed or logs your visit (Intercepts).
+                    </p>
+                </div>
             </section>
         </>
     );

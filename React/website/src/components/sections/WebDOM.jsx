@@ -2,7 +2,6 @@ import React from 'react';
 import SectionHeader from '../common/SectionHeader';
 import GlassCard from '../common/GlassCard';
 import CodeBlock from '../common/CodeBlock';
-import TamilBox from '../common/TamilBox';
 
 const WebDOM = () => {
     return (
@@ -37,29 +36,95 @@ const WebDOM = () => {
                                 el.style.display = "none";</code></pre>
                         </CodeBlock>
                     </GlassCard>
+                    <GlassCard className="mt-4">
+                        <h3><i className="fas fa-plus-square"></i> Create & Remove</h3>
+                        <CodeBlock>
+                            <pre><code>// Create
+                                let btn = document.createElement("button");
+                                btn.innerText = "Click Me";
+                                document.body.appendChild(btn);
+
+                                // Remove
+                                btn.remove();</code></pre>
+                        </CodeBlock>
+                    </GlassCard>
+                    <GlassCard className="mt-4">
+                        <h3><i className="fas fa-list"></i> Class List</h3>
+                        <CodeBlock>
+                            <pre><code>el.classList.add("active");
+                                el.classList.remove("hidden");
+                                el.classList.toggle("dark-mode");</code></pre>
+                        </CodeBlock>
+                    </GlassCard>
                 </div>
-                <TamilBox>
-                    <strong>DOM:</strong> ஒரு வீட்டின் வரைபடம் (Plan) போல. இந்த Plan-ஐ வைத்து சுவரை இடிக்கலாம் (Change Content), பெயிண்ட் அடிக்கலாம் (Style), அல்லது புது அறை கட்டலாம் (Create Element). எல்லாம் JavaScript என்ற இன்ஜினியர் கையில்!
-                </TamilBox>
+
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(59, 130, 246, 0.1)', borderLeft: '4px solid #3b82f6' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-sitemap" style={{ color: '#3b82f6' }}></i>
+                        <h3 style={{ color: '#3b82f6' }}>What is the DOM?</h3>
+                    </div>
+                    <p>
+                        Think of the DOM as the <strong>Blueprint</strong> of your house (website).<br />
+                        JavaScript is the <strong>Engineer</strong> who can use the blueprint to move walls (Layout), change colors (Styles), or build new rooms (Elements) dynamically.
+                    </p>
+                </div>
+
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(16, 185, 129, 0.1)', borderLeft: '4px solid #10b981' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-check-double" style={{ color: '#10b981' }}></i>
+                        <h3 style={{ color: '#10b981' }}>Pro Tip: Cache Your Selectors</h3>
+                    </div>
+                    <p>
+                        Searching the DOM (e.g., <code>document.getElementById</code>) is "expensive" for the browser.
+                        If you need to use an element multiple times, save it in a variable once and reuse it!
+                    </p>
+                </div>
             </section>
 
             {/* EVENTS */}
             <section id="events" className="content-section">
                 <SectionHeader title="Events" icon="fas fa-mouse-pointer" difficulty="Beginner" timeEstimate="10 min" />
-                <GlassCard>
-                    <h3><i className="fas fa-bolt"></i> Event Listeners</h3>
-                    <p>React to user actions like clicks, mouse moves, keys.</p>
-                    <CodeBlock>
-                        <pre><code>let btn = document.getElementById("myBtn");
+                <div className="grid-2">
+                    <GlassCard>
+                        <h3><i className="fas fa-bolt"></i> Event Listeners</h3>
+                        <p>React to user actions like clicks, mouse moves, keys.</p>
+                        <CodeBlock>
+                            <pre><code>let btn = document.getElementById("myBtn");
 
-                            btn.addEventListener("click", function() {'{'}
-                            alert("Button Clicked!");
-                            {'}'});</code></pre>
-                    </CodeBlock>
-                </GlassCard>
-                <TamilBox>
-                    <strong>Events:</strong> காத்துக்கொண்டிருத்தல். "வாசல் மணி அடித்தால் கதவை திற" என்பது போல. Button-ஐ Click செய்தால் (மணி அடித்தால்), Function வேலை செய்யும் (கதவு திறக்கும்).
-                </TamilBox>
+                                btn.addEventListener("click", function(e) {'{'}
+                                console.log(e.target); // The element clicked
+                                e.preventDefault();    // Stop default action
+                                {'}'});</code></pre>
+                        </CodeBlock>
+                    </GlassCard>
+                    <GlassCard>
+                        <h3><i className="fas fa-layer-group"></i> Propagation</h3>
+                        <p>Bubbling vs Capturing</p>
+                        <CodeBlock>
+                            <pre><code>// Bubbling (Default)
+                                // Inner -&gt; Outer
+                                p.addEventListener("click", fn, false);
+
+                                // Capturing
+                                // Outer -&gt; Inner
+                                div.addEventListener("click", fn, true);
+
+                                // Stop
+                                e.stopPropagation();</code></pre>
+                        </CodeBlock>
+                    </GlassCard>
+                </div>
+
+                <div className="info-card" style={{ marginTop: '1rem' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-info-circle"></i>
+                        <h3>Event Analogy</h3>
+                    </div>
+                    <p>
+                        <strong>Events:</strong> Waiting for a signal.<br />
+                        Like a doorbell: When someone presses it (Event: Click), the bell rings (Function Execution).
+                    </p>
+                </div>
             </section>
 
             {/* STORAGE */}
@@ -83,10 +148,18 @@ const WebDOM = () => {
                         </CodeBlock>
                     </GlassCard>
                 </div>
-                <TamilBox>
-                    <strong>Local Storage:</strong> பையில் போட்டு வைப்பது போல. நாம் எடுக்கும் வரை அங்கேயே இருக்கும்.<br />
-                    <strong>Session Storage:</strong> கையில் வைத்திருப்பது போல. கையை கழுவினால் (Tab Close) போய்விடும்.
-                </TamilBox>
+
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(16, 185, 129, 0.1)', borderLeft: '4px solid #10b981' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-database" style={{ color: '#10b981' }}></i>
+                        <h3 style={{ color: '#10b981' }}>Storage Comparison</h3>
+                    </div>
+                    <p>
+                        <strong>Local Storage:</strong> Like writing in a <strong>hardcover notebook</strong>. It stays on your desk until you explicitly throw it away.<br />
+                        <strong>Session Storage:</strong> Like writing on a <strong>whiteboard</strong>. It is wiped clean the moment you leave the room (or close the browser tab).<br />
+                        <strong>Cookies:</strong> Like a <strong>sticky note</strong> attached to every letter you send. The server reads it every time you make a request.
+                    </p>
+                </div>
             </section>
 
             {/* APIS */}
@@ -111,16 +184,54 @@ const WebDOM = () => {
             {/* COOKIES */}
             <section id="cookies" className="content-section">
                 <SectionHeader title="Cookies" icon="fas fa-cookie" difficulty="Intermediate" timeEstimate="5 min" />
-                <GlassCard>
-                    <h3><i className="fas fa-cookie-bite"></i> Managing Cookies</h3>
-                    <CodeBlock>
-                        <pre><code>// Set Cookie
-                            document.cookie = "username=John; expires=Thu, 18 Dec 2024 12:00:00 UTC";
+                <div className="grid-2">
+                    <GlassCard>
+                        <h3><i className="fas fa-cookie-bite"></i> Basic Cookies</h3>
+                        <CodeBlock>
+                            <pre><code>// Create
+                                document.cookie = "user=John";
 
-                            // Read Cookie
-                            let x = document.cookie;</code></pre>
-                    </CodeBlock>
-                </GlassCard>
+                                // Read
+                                let x = document.cookie;
+
+                                // Delete (Expire it)
+                                document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";</code></pre>
+                        </CodeBlock>
+                    </GlassCard>
+                    <GlassCard>
+                        <h3><i className="fas fa-shield-alt"></i> Attributes</h3>
+                        <CodeBlock>
+                            <pre><code>// Secure (HTTPS only)
+                                document.cookie = "user=John; Secure";
+
+                                // Expires (Time)
+                                document.cookie = "user=John; max-age=3600";
+
+                                // Path (Scope)
+                                document.cookie = "user=John; path=/";</code></pre>
+                        </CodeBlock>
+                    </GlassCard>
+                </div>
+
+                <div className="grid-2" style={{ marginTop: '1rem' }}>
+                    <GlassCard>
+                        <h3><i className="fas fa-lock"></i> Security Flags</h3>
+                        <p>Critical for protecting user data.</p>
+                        <ul>
+                            <li><strong>HttpOnly:</strong> Server-side only. JavaScript cannot access it (Prevents XSS).</li>
+                            <li><strong>SameSite:</strong> Strict/Lax. Prevents CSRF attacks.</li>
+                            <li><strong>Secure:</strong> Only sent over encrypted (HTTPS) connections.</li>
+                        </ul>
+                    </GlassCard>
+                    <GlassCard>
+                        <h3><i className="far fa-id-badge"></i> Use Cases</h3>
+                        <ul>
+                            <li><strong>Session Management:</strong> Logins, shopping carts.</li>
+                            <li><strong>Personalization:</strong> User themes, preferences.</li>
+                            <li><strong>Tracking:</strong> Analytics, ad behavior.</li>
+                        </ul>
+                    </GlassCard>
+                </div>
             </section>
         </>
     );

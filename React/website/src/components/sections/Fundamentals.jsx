@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import SectionHeader from '../common/SectionHeader';
 import GlassCard from '../common/GlassCard';
 import CodeBlock from '../common/CodeBlock';
-import TamilBox from '../common/TamilBox';
 import CodePlayground from '../common/CodePlayground';
 
 const Fundamentals = () => {
@@ -68,11 +67,54 @@ const Fundamentals = () => {
                     <p>JavaScript was created in just 10 days by Brendan Eich in 1995 while working at Netscape.</p>
                 </div>
 
-                <TamilBox>
-                    <strong>இணையதளத்தின் உயிர்.</strong><br />
-                    HTML என்பது எலும்புக்கூடு (Skeleton). CSS என்பது தோல் (Skin). JavaScript என்பது மூளை (Brain)
-                    மற்றும் உயிர் (Soul). ஒரு பட்டனை அழுத்தினால் என்ன நடக்க வேண்டும் என்பதை JS தான் தீர்மானிக்கிறது.
-                </TamilBox>
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(99, 102, 241, 0.1)', borderLeft: '4px solid #6366f1' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-question-circle" style={{ color: '#6366f1' }}></i>
+                        <h3 style={{ color: '#6366f1' }}>Why Learn JavaScript?</h3>
+                    </div>
+                    <p>
+                        It is the <strong>only</strong> language that runs natively in the browser. If you want to build modern websites (like Netflix, Facebook, or Amazon), you <em>must</em> know JavaScript.
+                    </p>
+                </div>
+
+                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', fontFamily: 'Poppins, sans-serif' }}>The Web Trinity</h3>
+                <div className="grid-3">
+                    <GlassCard>
+                        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                            <i className="fab fa-html5" style={{ fontSize: '3rem', color: '#e34c26' }}></i>
+                        </div>
+                        <h3 style={{ textAlign: 'center', marginBottom: '0.5rem', color: '#e34c26' }}>HTML</h3>
+                        <p style={{ textAlign: 'center', fontSize: '0.9rem' }}>The Skeleton (Structure)</p>
+                        <ul style={{ marginTop: '1rem', fontSize: '0.85rem', paddingLeft: '1.2rem', color: 'var(--text-secondary)' }}>
+                            <li>Defines content</li>
+                            <li>Structural tags</li>
+                        </ul>
+                    </GlassCard>
+
+                    <GlassCard>
+                        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                            <i className="fab fa-css3-alt" style={{ fontSize: '3rem', color: '#264de4' }}></i>
+                        </div>
+                        <h3 style={{ textAlign: 'center', marginBottom: '0.5rem', color: '#264de4' }}>CSS</h3>
+                        <p style={{ textAlign: 'center', fontSize: '0.9rem' }}>The Skin (Presentation)</p>
+                        <ul style={{ marginTop: '1rem', fontSize: '0.85rem', paddingLeft: '1.2rem', color: 'var(--text-secondary)' }}>
+                            <li>Styles & Layout</li>
+                            <li>Animations</li>
+                        </ul>
+                    </GlassCard>
+
+                    <GlassCard highlight={true} style={{ borderColor: '#f7df1e' }}>
+                        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                            <i className="fab fa-js-square" style={{ fontSize: '3rem', color: '#f7df1e' }}></i>
+                        </div>
+                        <h3 style={{ textAlign: 'center', marginBottom: '0.5rem', color: '#f0db4f' }}>JavaScript</h3>
+                        <p style={{ textAlign: 'center', fontSize: '0.9rem' }}>The Brain (Behavior)</p>
+                        <ul style={{ marginTop: '1rem', fontSize: '0.85rem', paddingLeft: '1.2rem', color: 'var(--text-secondary)' }}>
+                            <li>Dynamic logic</li>
+                            <li>Interactivity</li>
+                        </ul>
+                    </GlassCard>
+                </div>
 
                 <div className="code-comparison">
                     <div className="comparison-header">
@@ -120,7 +162,7 @@ const Fundamentals = () => {
                         </div>
                     </GlassCard>
 
-                    <GlassCard highlight={true}>
+                    <GlassCard>
                         <div className="card-header">
                             <h3><i className="fas fa-edit"></i> let</h3>
                             <span className="badge recommended">Recommended</span>
@@ -146,6 +188,14 @@ const Fundamentals = () => {
                             <span className="tip"><i className="fas fa-check-circle"></i> Use for values that won't change</span>
                         </div>
                     </GlassCard>
+                </div>
+
+                <div className="info-card" style={{ marginTop: '1rem', background: 'rgba(16, 185, 129, 0.1)', borderLeft: '4px solid #10b981' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-check-double" style={{ color: '#10b981' }}></i>
+                        <h3 style={{ color: '#10b981' }}>Pro Tip</h3>
+                    </div>
+                    <p>Always start by declaring variables with <code>const</code>. Only change to <code>let</code> if you know the value needs to change later. This prevents accidental reassignments and makes code safer.</p>
                 </div>
 
                 <CodePlayground
@@ -187,17 +237,48 @@ console.log('Result: ' + result);
                                 <div className="type-icon number">N</div>
                                 <div className="type-info">
                                     <h4>Number</h4>
-                                    <p>Integer etc</p>
-                                    <code>42, 3.14</code>
+                                    <p>Integer or floating point</p>
+                                    <code>42, 3.14, -5</code>
                                 </div>
                             </div>
-                            {/* ... Add other types similarly if needed, shortening for brevity given task constraints */}
                             <div className="type-card">
                                 <div className="type-icon boolean">B</div>
                                 <div className="type-info">
                                     <h4>Boolean</h4>
-                                    <p>True/False</p>
+                                    <p>Logical true/false</p>
                                     <code>true, false</code>
+                                </div>
+                            </div>
+                            <div className="type-card">
+                                <div className="type-icon null">Ø</div>
+                                <div className="type-info">
+                                    <h4>Null</h4>
+                                    <p>Intentional empty value</p>
+                                    <code>null</code>
+                                </div>
+                            </div>
+                            <div className="type-card">
+                                <div className="type-icon undefined">U</div>
+                                <div className="type-info">
+                                    <h4>Undefined</h4>
+                                    <p>Variable not assigned</p>
+                                    <code>undefined</code>
+                                </div>
+                            </div>
+                            <div className="type-card">
+                                <div className="type-icon symbol">Σ</div>
+                                <div className="type-info">
+                                    <h4>Symbol</h4>
+                                    <p>Unique identifier</p>
+                                    <code>Symbol('id')</code>
+                                </div>
+                            </div>
+                            <div className="type-card">
+                                <div className="type-icon bigint">B</div>
+                                <div className="type-info">
+                                    <h4>BigInt</h4>
+                                    <p>Large integers</p>
+                                    <code>12345678901234567890n</code>
                                 </div>
                             </div>
                         </div>
@@ -205,12 +286,28 @@ console.log('Result: ' + result);
                     <div className="data-type-category">
                         <h3><i className="fas fa-cube"></i> Non-Primitive Types (Mutable)</h3>
                         <div className="type-grid">
-                            <div className="type-card object">
+                            <div className="type-card">
                                 <div className="type-icon object">O</div>
                                 <div className="type-info">
                                     <h4>Object</h4>
-                                    <p>Key-value</p>
-                                    <code>{`{name: "John"}`}</code>
+                                    <p>Key-value collections</p>
+                                    <code>{`{name: "John", age: 30}`}</code>
+                                </div>
+                            </div>
+                            <div className="type-card">
+                                <div className="type-icon array">A</div>
+                                <div className="type-info">
+                                    <h4>Array</h4>
+                                    <p>Ordered lists</p>
+                                    <code>[1, 2, 3, 4, 5]</code>
+                                </div>
+                            </div>
+                            <div className="type-card">
+                                <div className="type-icon function">F</div>
+                                <div className="type-info">
+                                    <h4>Function</h4>
+                                    <p>Callable objects</p>
+                                    <code>function() {'{}'}</code>
                                 </div>
                             </div>
                         </div>
@@ -249,101 +346,242 @@ console.log('Result: ' + result);
                 </div>
             </section>
 
-            {/* OPERATORS - Shortened for brevity */}
+            {/* OPERATORS */}
             <section id="operators" className="content-section">
                 <SectionHeader title="Operators" icon="fas fa-calculator" difficulty="Beginner" timeEstimate="12 min" />
-                <p className="desc">Operators perform operations on variables and values.</p>
+                <p className="desc">Operators are symbols that perform operations on variables and values. JavaScript includes arithmetic, assignment, comparison, logical, and other operators.</p>
+
                 <div className="operators-grid">
                     <div className="operator-category">
-                        <h3><i className="fas fa-plus-circle"></i> Arithmetic</h3>
+                        <h3><i className="fas fa-plus-circle"></i> Arithmetic Operators</h3>
                         <div className="operator-table">
                             <div className="operator-row">
                                 <span className="operator-symbol">+</span>
                                 <span className="operator-name">Addition</span>
                                 <code>5 + 2 = 7</code>
                             </div>
-                            {/* ... more rows ... */}
+                            <div className="operator-row">
+                                <span className="operator-symbol">-</span>
+                                <span className="operator-name">Subtraction</span>
+                                <code>5 - 2 = 3</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">*</span>
+                                <span className="operator-name">Multiplication</span>
+                                <code>5 * 2 = 10</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">/</span>
+                                <span className="operator-name">Division</span>
+                                <code>5 / 2 = 2.5</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">%</span>
+                                <span className="operator-name">Modulus</span>
+                                <code>5 % 2 = 1</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">**</span>
+                                <span className="operator-name">Exponentiation</span>
+                                <code>5 ** 2 = 25</code>
+                            </div>
                         </div>
                     </div>
+
                     <div className="operator-category">
-                        <h3><i className="fas fa-balance-scale"></i> Comparison</h3>
+                        <h3><i className="fas fa-equals"></i> Assignment Operators</h3>
+                        <div className="operator-table">
+                            <div className="operator-row">
+                                <span className="operator-symbol">=</span>
+                                <span className="operator-name">Assignment</span>
+                                <code>x = 5</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">+=</span>
+                                <span className="operator-name">Add and assign</span>
+                                <code>x += 3 // x = x + 3</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">-=</span>
+                                <span className="operator-name">Subtract and assign</span>
+                                <code>x -= 3 // x = x - 3</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">*=</span>
+                                <span className="operator-name">Multiply and assign</span>
+                                <code>x *= 3 // x = x * 3</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">/=</span>
+                                <span className="operator-name">Divide and assign</span>
+                                <code>x /= 3 // x = x / 3</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">%=</span>
+                                <span className="operator-name">Modulus and assign</span>
+                                <code>x %= 3 // x = x % 3</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="operator-category">
+                        <h3><i className="fas fa-balance-scale"></i> Comparison Operators</h3>
                         <div className="operator-table">
                             <div className="operator-row">
                                 <span className="operator-symbol">==</span>
-                                <span className="operator-name">Equal (value)</span>
+                                <span className="operator-name">Equal to (value)</span>
                                 <code>5 == "5" // true</code>
                             </div>
                             <div className="operator-row highlight">
                                 <span className="operator-symbol">===</span>
-                                <span className="operator-name">Strict Equal</span>
+                                <span className="operator-name">Strict equal</span>
                                 <code>5 === "5" // false</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">!=</span>
+                                <span className="operator-name">Not equal</span>
+                                <code>5 != "5" // false</code>
+                            </div>
+                            <div className="operator-row highlight">
+                                <span className="operator-symbol">!==</span>
+                                <span className="operator-name">Strict not equal</span>
+                                <code>5 !== "5" // true</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">&gt;</span>
+                                <span className="operator-name">Greater than</span>
+                                <code>5 &gt; 3 // true</code>
+                            </div>
+                            <div className="operator-row">
+                                <span className="operator-symbol">&lt;</span>
+                                <span className="operator-name">Less than</span>
+                                <code>5 &lt; 3 // false</code>
                             </div>
                         </div>
                     </div>
                 </div>
-                <TamilBox>
-                    <strong>== vs === வேறுபாடு:</strong><br />
-                    <code>==</code> என்பது வெறும் மதிப்பை மட்டும் சரிபார்க்கும்.<br />
-                    <code>===</code> என்பது மதிப்பு மற்றும் வகை இரண்டையும் சரிபார்க்கும்.
-                </TamilBox>
+
+                <div className="operator-category" style={{ marginTop: '2rem' }}>
+                    <h3><i className="fas fa-code-branch"></i> Logical Operators</h3>
+                    <div className="operator-table">
+                        <div className="operator-row">
+                            <span className="operator-symbol">&&</span>
+                            <span className="operator-name">AND</span>
+                            <code>true && false // false</code>
+                        </div>
+                        <div className="operator-row">
+                            <span className="operator-symbol">||</span>
+                            <span className="operator-name">OR</span>
+                            <code>true || false // true</code>
+                        </div>
+                        <div className="operator-row">
+                            <span className="operator-symbol">!</span>
+                            <span className="operator-name">NOT</span>
+                            <code>!true // false</code>
+                        </div>
+                        <div className="operator-row">
+                            <span className="operator-symbol">??</span>
+                            <div className="operator-name">
+                                Nullish Coalescing
+                            </div>
+                            <code>null ?? "default" // "default"</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="info-card" style={{ marginTop: '2rem', background: 'rgba(245, 158, 11, 0.1)', borderLeft: '4px solid #f59e0b' }}>
+                    <div className="info-card-header">
+                        <i className="fas fa-exclamation-circle" style={{ color: '#f59e0b' }}></i>
+                        <h3 style={{ color: '#f59e0b' }}>Equality: == vs ===</h3>
+                    </div>
+                    <p>
+                        <code>==</code> checks for <strong>value only</strong> (performs automatic type conversion).<br />
+                        <code>===</code> checks for both <strong>value AND type</strong> (strict equality).<br />
+                        <strong>Recommendation:</strong> Always use <code>===</code> to avoid unexpected bugs.
+                    </p>
+                </div>
             </section>
 
             {/* CONVERSIONS */}
             <section id="conversions" className="content-section">
                 <SectionHeader title="Type Conversions" icon="fas fa-exchange-alt" difficulty="Beginner" timeEstimate="8 min" />
+                <p className="desc">JavaScript can convert values from one type to another automatically (implicit conversion) or manually (explicit conversion).</p>
                 <div className="grid-2">
                     <GlassCard>
                         <h3><i className="fas fa-magic"></i> Implicit Conversion</h3>
                         <p>Automatic type conversion by JavaScript</p>
                         <CodeBlock>
-                            <pre><code>"5" + 2      <span className="com">// "52"</span>
-                                "5" - 2      <span className="com">// 3</span></code></pre>
+                            <pre><code>"5" + 2      <span className="com">// "52" (string concatenation)</span>
+                                "5" - 2      <span className="com">// 3 (string to number)</span>
+                                "5" * "2"    <span className="com">// 10 (both strings to numbers)</span>
+                                true + false <span className="com">// 1 (booleans to numbers)</span>
+                                5 + null     <span className="com">// 5 (null becomes 0)</span>
+                                "5" + null   <span className="com">// "5null" (null becomes "null")</span></code></pre>
                         </CodeBlock>
                     </GlassCard>
                     <GlassCard>
                         <h3><i className="fas fa-wrench"></i> Explicit Conversion</h3>
-                        <p>Manual type conversion</p>
+                        <p>Manual type conversion by developer</p>
                         <CodeBlock>
-                            <pre><code><span className="kwd">Number</span>("123")      <span className="com">// 123</span>
-                                <span className="kwd">String</span>(123)        <span className="com">// "123"</span></code></pre>
+                            <pre><code><span className="kwd">String</span>(123)        <span className="com">// "123"</span>
+                                <span className="kwd">Number</span>("123")      <span className="com">// 123</span>
+                                <span className="kwd">Boolean</span>(1)         <span className="com">// true</span>
+                                <span className="kwd">parseInt</span>("10px")   <span className="com">// 10</span>
+                                <span className="kwd">parseFloat</span>("3.14") <span className="com">// 3.14</span>
+                                + "123"            <span className="com">// 123 (unary plus)</span>
+                                !! 1               <span className="com">// true (double NOT)</span></code></pre>
                         </CodeBlock>
                     </GlassCard>
                 </div>
-                <TamilBox>
-                    <strong>தானாகவே மாற்றுதல் vs நாம் மாற்றுதல்:</strong><br />
-                    JavaScript சில நேரங்களில் தானாகவே மதிப்புகளை மாற்றும் (Implicit).<br />
-                    நாம் குறிப்பாக மாற்ற வேண்டும் என்றால் (Explicit): <code>Number("5") + 2 = 7</code>
-                </TamilBox>
             </section>
 
             {/* HOISTING */}
             <section id="hoisting" className="content-section">
                 <SectionHeader title="Hoisting" icon="fas fa-arrow-up" difficulty="Intermediate" timeEstimate="10 min" />
-                <p className="desc">Hoisting moves declarations to the top.</p>
+                <p className="desc">Hoisting is JavaScript's behavior of moving declarations to the top of their scope before code execution.</p>
                 <div className="grid-3">
                     <GlassCard>
-                        <h3><i className="fas fa-arrow-up"></i> var Hoisting</h3>
-                        <p>Initialized with undefined</p>
+                        <div className="card-header">
+                            <h3><i className="fas fa-arrow-up"></i> var Hoisting</h3>
+                        </div>
+                        <p>Variables are hoisted and initialized with undefined</p>
                         <CodeBlock>
                             <pre><code>console.log(x); <span className="com">// undefined</span>
                                 <span className="kwd">var</span> x = 5;</code></pre>
                         </CodeBlock>
+                        <div className="card-footer">
+                            <span className="tip" style={{ color: 'var(--accent-success)' }}><i className="fas fa-info-circle"></i> Declaration is hoisted, assignment stays</span>
+                        </div>
                     </GlassCard>
+
                     <GlassCard>
-                        <h3><i className="fas fa-exclamation-triangle"></i> let/const</h3>
-                        <p>Temporal Dead Zone</p>
+                        <div className="card-header">
+                            <h3><i className="fas fa-exclamation-triangle"></i> let/const Hoisting</h3>
+                        </div>
+                        <p>Variables are hoisted but not initialized (Temporal Dead Zone)</p>
                         <CodeBlock>
-                            <pre><code>console.log(y); <span className="com">// Error</span>
+                            <pre><code>console.log(y); <span className="com">// ❌ Error</span>
                                 <span className="kwd">let</span> y = 5;</code></pre>
                         </CodeBlock>
+                        <div className="card-footer">
+                            <span className="warning" style={{ color: 'var(--accent-warning)' }}><i className="fas fa-exclamation-circle"></i> Cannot access before declaration</span>
+                        </div>
                     </GlassCard>
+
                     <GlassCard>
-                        <h3><i className="fas fa-function"></i> Function</h3>
-                        <p>Fully hoisted</p>
+                        <div className="card-header">
+                            <h3>Function Hoisting</h3>
+                        </div>
+                        <p>Function declarations are fully hoisted</p>
                         <CodeBlock>
-                            <pre><code>sayHi(); <span className="com">// "Hi"</span>
-                                <span className="kwd">function</span> sayHi() {'{'}...{'}'}</code></pre>
+                            <pre><code>sayHello(); <span className="com">// ✅ "Hello!"</span>
+                                <span className="kwd">function</span> sayHello() {'{'}
+                                console.log("Hello!");
+                                {'}'}</code></pre>
                         </CodeBlock>
+                        <div className="card-footer">
+                            <span className="tip" style={{ color: 'var(--accent-success)' }}><i className="fas fa-check-circle"></i> Can call before declaration</span>
+                        </div>
                     </GlassCard>
                 </div>
             </section>
@@ -352,3 +590,4 @@ console.log('Result: ' + result);
 };
 
 export default Fundamentals;
+

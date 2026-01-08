@@ -1,0 +1,23 @@
+.avatar {
+  background-color: hotpink;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border: 2px solid black;
+  transition: all 0.5s ease;
+
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+.image {
+  width: 200px;
+  height: 300px;
+}

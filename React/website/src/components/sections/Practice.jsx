@@ -109,7 +109,18 @@ b = temp;
                     )}
                 </div>
             </div>
-        </section>
+
+            <div className="info-card" style={{ marginTop: '2rem', background: 'rgba(99, 102, 241, 0.1)', borderLeft: '4px solid #6366f1' }}>
+                <div className="info-card-header">
+                    <i className="fas fa-brain" style={{ color: '#6366f1' }}></i>
+                    <h3 style={{ color: '#6366f1' }}>Why Practice Matters?</h3>
+                </div>
+                <p>
+                    Reading code is like watching someone exercise. Writing code is like doing the exercise yourself.
+                    You only build the "muscle memory" by typing it out and solving problems!
+                </p>
+            </div>
+        </section >
     );
 };
 

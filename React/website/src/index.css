@@ -1518,6 +1518,32 @@ code {
   }
 }
 
+/* Mobile Sidebar & Layout Fixes */
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: none;
+    z-index: 1000;
+    /* Above content */
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  /* Mobile Menu Button visibility handled in App.jsx override or below */
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+}
+
 /* Footer Styles */
 .main-footer {
   background-color: var(--bg-card);
@@ -1565,14 +1591,31 @@ code {
 /* Responsive Protections */
 .glass-card {
   max-width: 100%;
+  min-width: 0;
+  /* Critical for Grid/Flex overflow */
+}
+
+.code-block {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 pre {
   max-width: 100%;
   overflow-x: auto;
+  white-space: pre;
+  /* Default: scroll, don't wrap unless specific mobile override */
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Specific Mobile Overrides for code readability if needed */
+@media (max-width: 600px) {
+  pre {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
 }

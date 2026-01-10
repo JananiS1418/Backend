@@ -120,7 +120,7 @@ b = temp;
                     You only build the "muscle memory" by typing it out and solving problems!
                 </p>
             </div>
-        </section >
+        </section>
     );
 };
 

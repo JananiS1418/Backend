@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
+import LoginPage from './components/LoginPage';
 import './index.css'; // Global styles including Tailwind
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 900); // Default based on screen size
   const [activeSection, setActiveSection] = useState('intro');
-  const [completedSections, setCompletedSections] = useState([]);
+  const [user, setUser] = useState(null); // User State (null = logged out)
 
   // Theme Logic
   useEffect(() => {
@@ -43,28 +44,6 @@ function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // Learning Progress Logic
-  useEffect(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem('completedSections')) || [];
-      setCompletedSections(saved);
-    } catch (e) {
-      setCompletedSections([]);
-    }
-  }, []);
-
-  const toggleCompletion = (sectionId) => {
-    let newCompleted;
-    if (completedSections.includes(sectionId)) {
-      newCompleted = completedSections.filter(id => id !== sectionId);
-    } else {
-      newCompleted = [...completedSections, sectionId];
-    }
-    setCompletedSections(newCompleted);
-    localStorage.setItem('completedSections', JSON.stringify(newCompleted));
-  };
-
 
   // Scroll Spy Logic
   useEffect(() => {
@@ -101,6 +80,10 @@ function App() {
   }, [activeSection]);
 
 
+  if (!user) {
+    return <LoginPage onLogin={(userData) => setUser(userData)} />;
+  }
+
   return (
     <div className="app-container">
       {/* Mobile Menu Button - Shown via CSS on mobile */}
@@ -127,7 +110,7 @@ function App() {
         />
       )}
 
-      <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} user={user} />
 
       <div className="main-container">
         <Sidebar
@@ -139,8 +122,6 @@ function App() {
         <MainContent
           sidebarOpen={sidebarOpen}
           activeSection={activeSection}
-          completedSections={completedSections}
-          toggleCompletion={toggleCompletion}
         />
       </div>
     </div>

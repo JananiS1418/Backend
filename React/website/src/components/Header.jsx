@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Header = ({ isDarkMode, toggleTheme }) => {
+const Header = ({ isDarkMode, toggleTheme, user }) => {
     return (
         <header className="main-header">
             <div className="header-content">
@@ -17,6 +17,26 @@ const Header = ({ isDarkMode, toggleTheme }) => {
                 </div>
 
                 <div className="header-controls">
+                    {user && (
+                        <div style={{ marginRight: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <span style={{ fontSize: '1rem', fontWeight: '500', color: 'var(--text-primary)' }}>
+                                Hi, {user.name}
+                            </span>
+                            <div style={{
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '50%',
+                                background: 'var(--accent-primary)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: 'white',
+                                fontSize: '0.9rem'
+                            }}>
+                                <i className="fas fa-user"></i>
+                            </div>
+                        </div>
+                    )}
                     <div className="theme-toggle">
                         <span id="themeLabel">{isDarkMode ? 'Dark Mode' : 'Light Mode'}</span>
                         <label className="switch">

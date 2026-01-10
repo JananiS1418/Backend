@@ -212,6 +212,42 @@ input:checked+.slider:before {
   transform: translateX(26px);
 }
 
+/* App Container */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  /* Hidden by default (Desktop) */
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  /* moved to left to avoid backToTop conflict */
+  width: 48px;
+  height: 48px;
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 1001;
+  /* Above sidebar backdrop */
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+  background-color: var(--accent-secondary);
+  transform: scale(1.1);
+}
+
 /* Main Container */
 .main-container {
   display: flex;
@@ -1538,7 +1574,7 @@ code {
     padding: 1.5rem;
   }
 
-  /* Mobile Menu Button visibility handled in App.jsx override or below */
+  /* Mobile Menu Button - Shown via CSS on mobile */
   .mobile-menu-btn {
     display: flex !important;
   }
@@ -1618,4 +1654,64 @@ img {
     white-space: pre-wrap;
     word-break: break-all;
   }
+}
+
+/* Info Card / Real-life Example Card - Enhanced Design */
+.info-card {
+  background-color: var(--bg-card);
+  /* Default fallback */
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  /* Increased padding as requested */
+  margin: 3rem 0;
+  /* Increased vertical space */
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.info-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.info-card-header h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.info-card-header i {
+  font-size: 1.5rem;
+}
+
+/* Ensure paragraph text in info-cards is readable */
+.info-card p {
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+/* Adjustments for nested code blocks */
+.info-card pre,
+.info-card code {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+}
+
+[data-theme="dark"] .info-card pre,
+[data-theme="dark"] .info-card code {
+  background-color: rgba(0, 0, 0, 0.3);
 }

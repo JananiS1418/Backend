@@ -1,18 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
 const Sidebar = ({ isOpen, toggleSidebar, activeSection }) => {
-    const [completedSections, setCompletedSections] = useState([]);
-
-    useEffect(() => {
-        try {
-            const saved = JSON.parse(localStorage.getItem('completedSections')) || [];
-            setCompletedSections(saved);
-        } catch (e) {
-            setCompletedSections([]);
-        }
-    }, []);
-
-    const progressPercentage = Math.round((completedSections.length / 15) * 100); // Assuming 15 total sections for now
 
     return (
         <nav className={`sidebar ${!isOpen ? 'collapsed' : 'active'}`} id="sidebar">
@@ -73,7 +59,7 @@ const Sidebar = ({ isOpen, toggleSidebar, activeSection }) => {
                 </a>
             </div>
 
-            <div className={`nav-group ${['arrays', 'strings', 'objects', 'classes', 'mapsets', 'json'].includes(activeSection) ? 'active' : ''}`}>
+            <div className={`nav-group ${['arrays', 'strings', 'objects', 'classes', 'json'].includes(activeSection) ? 'active' : ''}`}>
                 <div className="nav-header">
                     <i className="fas fa-layer-group"></i>
                     <span>03. Data Structures</span>
@@ -94,17 +80,13 @@ const Sidebar = ({ isOpen, toggleSidebar, activeSection }) => {
                     <i className="fas fa-shapes"></i>
                     <span>Classes (OOP)</span>
                 </a>
-                <a href="#mapsets" className={`nav-link ${activeSection === 'mapsets' ? 'active' : ''}`}>
-                    <i className="fas fa-map"></i>
-                    <span>Map & Set</span>
-                </a>
                 <a href="#json" className={`nav-link ${activeSection === 'json' ? 'active' : ''}`}>
                     <i className="fas fa-code"></i>
                     <span>JSON</span>
                 </a>
             </div>
 
-            <div className={`nav-group ${['dom', 'events', 'storage', 'apis', 'cookies'].includes(activeSection) ? 'active' : ''}`}>
+            <div className={`nav-group ${['dom', 'events', 'storage', 'apis'].includes(activeSection) ? 'active' : ''}`}>
                 <div className="nav-header">
                     <i className="fas fa-globe"></i>
                     <span>04. The Web (DOM)</span>
@@ -125,13 +107,9 @@ const Sidebar = ({ isOpen, toggleSidebar, activeSection }) => {
                     <i className="fas fa-plug"></i>
                     <span>APIs</span>
                 </a>
-                <a href="#cookies" className={`nav-link ${activeSection === 'cookies' ? 'active' : ''}`}>
-                    <i className="fas fa-cookie"></i>
-                    <span>Cookies</span>
-                </a>
             </div>
 
-            <div className={`nav-group ${['es6', 'async', 'fetch', 'modules', 'iterators', 'proxies'].includes(activeSection) ? 'active' : ''}`}>
+            <div className={`nav-group ${['es6', 'callbacks', 'promises', 'async', 'fetch', 'modules'].includes(activeSection) ? 'active' : ''}`}>
                 <div className="nav-header">
                     <i className="fas fa-bolt"></i>
                     <span>05. Advanced ES6+</span>
@@ -139,6 +117,14 @@ const Sidebar = ({ isOpen, toggleSidebar, activeSection }) => {
                 <a href="#es6" className={`nav-link ${activeSection === 'es6' ? 'active' : ''}`}>
                     <i className="fas fa-star"></i>
                     <span>ES6 Features</span>
+                </a>
+                <a href="#callbacks" className={`nav-link ${activeSection === 'callbacks' ? 'active' : ''}`}>
+                    <i className="fas fa-phone"></i>
+                    <span>Callback Functions</span>
+                </a>
+                <a href="#promises" className={`nav-link ${activeSection === 'promises' ? 'active' : ''}`}>
+                    <i className="fas fa-handshake"></i>
+                    <span>Promises</span>
                 </a>
                 <a href="#async" className={`nav-link ${activeSection === 'async' ? 'active' : ''}`}>
                     <i className="fas fa-clock"></i>
@@ -152,24 +138,20 @@ const Sidebar = ({ isOpen, toggleSidebar, activeSection }) => {
                     <i className="fas fa-puzzle-piece"></i>
                     <span>Modules</span>
                 </a>
-                <a href="#iterators" className={`nav-link ${activeSection === 'iterators' ? 'active' : ''}`}>
-                    <i className="fas fa-sync-alt"></i>
-                    <span>Iterators</span>
-                </a>
-                <a href="#proxies" className={`nav-link ${activeSection === 'proxies' ? 'active' : ''}`}>
-                    <i className="fas fa-mask"></i>
-                    <span>Proxies</span>
+            </div>
+
+            <div className={`nav-group ${['conclusion'].includes(activeSection) ? 'active' : ''}`}>
+                <div className="nav-header">
+                    <i className="fas fa-flag-checkered"></i>
+                    <span>06. Conclusion</span>
+                </div>
+                <a href="#conclusion" className={`nav-link ${activeSection === 'conclusion' ? 'active' : ''}`}>
+                    <i className="fas fa-trophy"></i>
+                    <span>Completion</span>
                 </a>
             </div>
 
             <div className="sidebar-footer">
-                <div className="progress-container">
-                    <div className="progress-label">Learning Progress</div>
-                    <div className="progress-bar">
-                        <div className="progress-fill" id="learningProgress" style={{ width: `${progressPercentage}%` }}></div>
-                    </div>
-                    <div className="progress-text">{progressPercentage}% Complete</div>
-                </div>
             </div>
         </nav>
     );

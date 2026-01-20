@@ -28,24 +28,13 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     
-    if (!validateForm()) {
-      return;
-    }
-    
-    setIsLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Login attempt with:', { email, password, rememberMe });
-      setIsLoading(false);
+   
+      navigate('/'); 
       
-      // Navigate to MovieDetails page on successful login
-      navigate('/'); // Change this to your MovieDetails route
-      
-    }, 1500);
+    
   };
 
   const handleGoogleLogin = () => {

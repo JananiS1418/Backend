@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from './Button'
 import withButton from '../hoc/withButton'
+import Count from './Count'
+import Show from './Show'
 
 
  const Button2 = withButton(Button)
@@ -17,6 +19,9 @@ const Home = () => {
     
      <Button text={"This is button 1"} show={show}/>
      <Button2 text={"This is button 2"} />
+     <Count/>
+     <Show/>
+     
      </>
   )
 }

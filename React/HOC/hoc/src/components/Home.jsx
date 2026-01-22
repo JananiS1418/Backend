@@ -14,11 +14,11 @@ const Home = () => {
      const show = ()=>{
         alert("This is button 1")
      }
-  return (
+  return (  
     <>
     
      <Button text={"This is button 1"} show={show}/>
-     <Button2 text={"This is button 2"} />
+     <Button2 text={"This is button 2"} show={show} />
      <Count/>
      <Show/>
      

@@ -5,8 +5,7 @@ import Display from "./components/Display"
 const App = () => {
   return (
     <>
-     <Display/>
-     <Button/>
+    
     </>
   )
 }

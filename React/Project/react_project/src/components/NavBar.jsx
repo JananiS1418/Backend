@@ -7,13 +7,17 @@ const NavBar = () => {
   return (
     <>
 
-    <div className="flex justify-between items-center bg-gray-100 p-4 ">
+    <div className="flex justify-center gap-50 items-center bg-gray-100 p-4 ">
         <div>
-            <h1 className="text-1xl">JM  Maligai</h1>
+          <h1 className="text-2xl font-serif font-bold">
+  <span className="text-green-700 border-r-2 border-green-300 pr-2">JM</span>
+  <span className="text-gray-800 pl-2">Maligai</span>
+  <span className="text-xs text-green-600 block font-sans">Grocery Store</span>
+</h1>
         </div>
         <div  className="flex justify-center items-center gap-2">
             <img src={search} className="w-5 h-5" alt="" />
-            <input type="text" placeholder="Search"className="rounded-2xl p-1 border-2 border-black" />
+            <input type="text" placeholder="Search"className="rounded-2xl w-60   p-1 border-2 border-black" />
         </div>
         <div className="flex gap-15 justify-center items-center">
             <Link to="/">Products</Link>

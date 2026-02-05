@@ -4,6 +4,8 @@ import Login from '../components/Login'
 import NavBar from '../components/NavBar'
 import AppLayOut from '../outlets/AppLayOut'
 import Banner from '../components/Banner'
+import Register from '../components/Register'
+import Dashboard from '../components/Dashboard'
 
 const AppRoute = () => {
   return (
@@ -15,6 +17,9 @@ const AppRoute = () => {
        <Route path="/" element={<Banner/>} />
     </Route>
   <Route path="/login" element={<Login/>}/>
+  <Route path="/register" element={<Register/>}/>
+  <Route path="/dashboard" element={<Dashboard/>}/>
+
    </Routes>
   </>
   )

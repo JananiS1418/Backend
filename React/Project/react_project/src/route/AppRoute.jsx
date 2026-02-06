@@ -1,11 +1,13 @@
 
 import { Route, Routes } from 'react-router-dom'
 import Login from '../components/Login'
-import NavBar from '../components/NavBar'
+
 import AppLayOut from '../outlets/AppLayOut'
 import Banner from '../components/Banner'
 import Register from '../components/Register'
 import Dashboard from '../components/Dashboard'
+import Categories from '../components/Categories'
+import AdminLayout from '../outlets/AdminLayout'
 
 const AppRoute = () => {
   return (
@@ -18,8 +20,12 @@ const AppRoute = () => {
     </Route>
   <Route path="/login" element={<Login/>}/>
   <Route path="/register" element={<Register/>}/>
-  <Route path="/dashboard" element={<Dashboard/>}/>
 
+
+ <Route path="/" element={<AdminLayout/>}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="categories" element={<Categories />} />
+        </Route>
    </Routes>
   </>
   )

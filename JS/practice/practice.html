@@ -59,6 +59,38 @@
       }
       const check = isPalindrome?"yes it is Palindrome":'No'
       console.log(check);
+
+
+      
+      const value = (str)=>{
+        let count  = 0
+        let vowels =  'aeiouAEIOU'
+        for(let i=0;i<=str.length;i++){
+            for(let j=0;j<vowels.length;j++){
+                if(str[i] === vowels[j]){
+                    count++
+                    break
+                }
+            }
+
+        }
+        return count
+      }
+      console.log(value("Janani"));
+
+      const prime  = (num)=>{
+       if(num <= 1)
+      return false
+    for(let i=2;i<= num;i++){
+        if(num%i === 0){
+            return "Not Prime"
+        }
+        
+    } 
+    return "Prime"
+
+      }
+      console.log(prime(2));
       
       
 

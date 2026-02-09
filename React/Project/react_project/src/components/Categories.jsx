@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 
 const Categories = () => {
   const [search, setSearch] = useState("");
-  const [add, setAdd] = useState("");
-  const [status, setStatus] = useState("");
+  const [add,  setAdd] = useState("");
   const [produts, setProducts] = useState([]);
+  const [status, setStatus] = useState("");
+  
+  const[edit,setEdit] = useState(null)
 
   
   useEffect(() => {
@@ -17,6 +19,11 @@ const Categories = () => {
   );
 
   const addCategory = () => {
+
+     if (!add || !status) {
+    alert("Please fill all fields");
+    return;
+  }
     
 
     const data = JSON.parse(localStorage.getItem("categories")) || [];
@@ -35,6 +42,13 @@ const Categories = () => {
     setStatus("");
   };
 
+
+  const editClick = (editid)=>{
+
+  
+     
+  }
+
   return (
     <>
       <div>
@@ -49,7 +63,17 @@ const Categories = () => {
             placeholder="Search Category..."
           />
 
-          <select
+        
+
+          <input
+            value={add}
+            onChange={(e) => setAdd(e.target.value)}
+            type="text"
+            className="bg-gray-300 p-1 rounded"
+            placeholder="Add Category..."
+          />
+
+            <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
             className="bg-gray-300 p-1 rounded"
@@ -60,14 +84,6 @@ const Categories = () => {
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
           </select>
-
-          <input
-            value={add}
-            onChange={(e) => setAdd(e.target.value)}
-            type="text"
-            className="bg-gray-300 p-1 rounded"
-            placeholder="Add Category..."
-          />
 
           <button
             onClick={addCategory}
@@ -104,7 +120,7 @@ const Categories = () => {
                   </span>
                 </td>
                 <td className="border p-2 space-x-2">
-                  <button className="bg-blue-500 text-white px-3 py-1 rounded">
+                  <button onClick={()=>editClick(p.id)} className="bg-blue-500 text-white px-3 py-1 rounded">
                     Edit
                   </button>
                   <button className="bg-red-500 text-white px-3 py-1 rounded">

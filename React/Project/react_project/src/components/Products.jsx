@@ -8,7 +8,7 @@ const Products = () => {
  const [status,setStatus]  = useState("")
  const [price,setPrice] = useState("")
  const [showcategory,setShowCategory] = useState([])
-
+      
 
 const handleClick = () => {
   if (!name || !category || !price || !status) {

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        //largest of three numbers
+
+       const num = [98, 99, 78];
+       let max = num[0];
+       for (let i = 1; i < 3; i++) {
+         if (num[i] > max) {
+             max = num[i];
+         }
+      }
+        console.log("Largest number:", max);
+
+
+    //reverse  a string
+
+      let str = "janani"
+      let reverse = ""
+      for(let i=str.length-1;i>=0;i--){
+        reverse  += str[i]
+      }
+      console.log("reverse strring -" ,reverse);
+      
+     //prime or  not a prime
+
+      let n = 2
+      let isprime  = true
+      if(num <=1){
+        isprime = false
+      }else{
+        for(let i=2;i<n ;i++){
+            if(n%i=== 0){
+                isprime= false
+                break
+            }
+        }
+      }
+      let check  = isprime ?"Prime Number" : "Not a Prime Number"
+      console.log("Check prime number-",check);
+      
+
+      //sum of all elements in an array
+
+      let arr = [1,2,3,4,5,6]
+      let sum = 0
+      for(let i=0;i< arr.length;i++){
+        sum += arr[i]
+      }
+       console.log("sum-",sum);
+
+       //Count the number of vowels in a string
+
+       let string = "Janu"
+       let count = 0
+       let vowels = "aeiouAEIOU"
+       for(let i=0;i<string.length;i++){
+        for(let j=0;j<vowels.length;j++){
+            if(string[i] === vowels[j]){
+                    count++
+                    break
+                }
+        }
+       
+       }
+       console.log("Count the vowels - " ,count);
+       
+       
+
+
+    </script>
+</body>
+</html>

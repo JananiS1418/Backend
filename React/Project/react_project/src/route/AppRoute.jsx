@@ -9,6 +9,7 @@ import Dashboard from '../components/Dashboard'
 import Categories from '../components/Categories'
 import AdminLayout from '../outlets/AdminLayout'
 import Products from '../components/Products'
+import ShowCatogery from '../components/ShowCatogery'
 
 const AppRoute = () => {
   return (
@@ -24,9 +25,10 @@ const AppRoute = () => {
 
 
  <Route path="/" element={<AdminLayout/>}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="categories" element={<Categories />} />
-          <Route path="products" element={<Products />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/cat" element={<ShowCatogery />} />
         </Route>
    </Routes>
   </>

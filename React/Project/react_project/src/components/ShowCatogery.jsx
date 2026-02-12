@@ -127,7 +127,7 @@ const handldelete = (id)=>{
     const data = JSON.parse(localStorage.getItem("categorydata") ?? "[]");
     const filtered = data.filter((item) => item.cat_id !== id);
     //console.log(filtered);
-     alert('are you sure to delete')
+     alert('Are you sure to delete')
      localStorage.setItem("categorydata", JSON.stringify(filtered));
 
      setSaveCat(filtered);
@@ -137,54 +137,109 @@ const handldelete = (id)=>{
 }
     
   return (
-   <>
-   
-   <form className="flex gap-2">
-    <input type="text" value={cat.catname} onChange={handleChange} name="catname" placeholder="Enter the cat name" className="bg-black w-50 text-white p-2 rounded" />
-    <select name="catstatus" value={cat.catstatus} onChange={handleChange} className="bg-black w-50 text-white p-2">
-        <option  value={""} disabled>Select Status</option>
+  <>
+     <div>
+      <h1 className="text-center text-3xl">Category Dashboard </h1>
+     </div>
+    <form className="bg-gray-900 mt-10 p-5 rounded-lg flex flex-wrap gap-4 items-center">
+      <input
+        type="text"
+        value={cat.catname}
+        onChange={handleChange}
+        name="catname"
+        placeholder="Enter the cat name"
+        className="bg-gray-800 text-white px-4 py-2 rounded w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      <select
+        name="catstatus"
+        value={cat.catstatus}
+        onChange={handleChange}
+        className="bg-gray-800 text-white px-4 py-2 rounded w-48 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value={""} disabled>
+          Select Status
+        </option>
         <option value={"Active"}>Active</option>
         <option value={"Inactive"}>Inactive</option>
-    </select>
-   
-   {editdata?<button onClick={handleUpdate} className="bg-black text-white p-2 w-30 rounded" type="button">Update</button>:<button onClick={handleSubmit} className="bg-black text-white p-2 w-30 rounded" type="button">Add</button>}
+      </select>
 
+      {editdata ? (
+        <button
+          onClick={handleUpdate}
+          type="button"
+          className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-2 rounded font-semibold"
+        >
+          Update
+        </button>
+      ) : (
+        <button
+          onClick={handleSubmit}
+          type="button"
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold"
+        >
+          Add
+        </button>
+      )}
+    </form>
 
-   </form>
+    
+    <div className="mt-6 overflow-x-auto">
+      <table className="min-w-full border border-gray-700 text-white">
+        <thead className="bg-gray-800">
+          <tr>
+            <th className="border border-gray-700 px-4 py-2">Sno</th>
+            <th className="border border-gray-700 px-4 py-2">Cat Name</th>
+            <th className="border border-gray-700 px-4 py-2">Cat Status</th>
+            <th className="border border-gray-700 px-4 py-2">Action</th>
+          </tr>
+        </thead>
 
+        <tbody className="bg-gray-900">
+          {showcat.map((e) => (
+            <tr
+              key={e.cat_id}
+              className="text-center hover:bg-gray-800 transition"
+            >
+              <td className="border border-gray-700 px-4 py-2">
+                {e.cat_id}
+              </td>
+              <td className="border border-gray-700 px-4 py-2">
+                {e.catname}
+              </td>
+              <td className="border border-gray-700 px-4 py-2">
+                <span
+                  className={`px-3 py-1 rounded text-sm ${
+                    e.catstatus === "Active"
+                      ? "bg-green-600"
+                      : "bg-red-600"
+                  }`}
+                >
+                  {e.catstatus}
+                </span>
+              </td>
+              <td className="border border-gray-700 px-4 py-2">
+                <button
+                  onClick={() => handledit(e.cat_id)}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handldelete(e.cat_id)}
+                  className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded ml-2"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </>
+);
 
-  <div className="mt-4">
-     <table className="border-2 w-100 h-60">
-      <thead className="border-2">
-  <tr>
-    <th className="border-2">Sno</th>
-    <th className="border-2">Cat Name</th>
-    <th className="border-2">Cat Status</th>
-    <th className="border-2">Action</th>
-  </tr>
-</thead>
-
-       <tbody >
-       {showcat.map((e)=>(
-
-        <tr key={e.cat_id} className="text-center">
-            <td className="border-2">{e.cat_id}</td>
-            <td className="border-2">{e.catname}</td>
-            <td className="border-2">{e.catstatus}</td>
-            <td className="border-2">
-            <button onClick={()=>handledit(e.cat_id)} className="bg-blue-700 text-white p-1 w-20 rounded">Edit</button> ||  
-             <button onClick={()=>handldelete(e.cat_id)} className="bg-red-700 text-white p-1 w-20 ml-2 rounded">Delete</button>
-            </td>
-        </tr>
-
-       ))}
-        
-       </tbody>
-   </table>
-  </div>
-   
-   </>
-  )
 }
 
 export default ShowCatogery

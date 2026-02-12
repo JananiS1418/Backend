@@ -1,141 +1,296 @@
-import React, { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
+
+
 
 const Products = () => {
 
- const[products,setProducts] = useState([])
- const [name,setName] = useState('')
- const [category,setCategory] = useState('')
- const [status,setStatus]  = useState("")
- const [price,setPrice] = useState("")
- const [showcategory,setShowCategory] = useState([])
-      
+  const [products, setProducts] = useState({ name: "", category: "", price: "", status: "", image: "" })
 
-const handleClick = () => {
-  if (!name || !category || !price || !status) {
-    alert("Please fill all fields");
-    return;
+  const [saveproducts, setSaveproducts] = useState([])
+  const [showproducts, setShowproducts] = useState([])
+  const [categories, setCategories] = useState([])
+  const [editdata, setEditdata] = useState("")
+
+
+  const handleChange = (e) => {
+
+    setProducts({ ...products, [e.target.name]: e.target.value })
+
   }
 
-  const data = localStorage.getItem("products");
-  const productsArray = data ? JSON.parse(data) : [];
 
-  const storedata = {
-    id: productsArray.length + 1,
-    name,
-    category,
-    price,
-    status,
+  const handleClick = (e) => {
+
+    e.preventDefault()
+
+    if (!products) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    const data = localStorage.getItem("products");
+    const productsArray = data ? JSON.parse(data) : [];
+
+    const storedata = {
+      id: productsArray.length + 1,
+      name: products.name,
+      category: products.category,
+      price: products.price,
+      status: products.status,
+      image: products.image
+    };
+
+    productsArray.push(storedata);
+
+    localStorage.setItem("products", JSON.stringify(productsArray));
+    setSaveproducts(productsArray);
+
+    setProducts({ name: "", category: "", price: "", status: "", image: "" })
+
+
+  }
+
+  const getCategory = () => {
+    const getdata = localStorage.getItem("categorydata");
+    const categorychange = getdata ? JSON.parse(getdata) : [];
+    console.log(categorychange);
+
+    setCategories(categorychange.filter((e) => e.catstatus === "Active"));
   };
 
-  productsArray.push(storedata);
 
-  localStorage.setItem("products", JSON.stringify(productsArray));
-  setProducts(productsArray);
+  useEffect(() => {
 
-  setName("");
-  setCategory("");
-  setPrice("");
-  setStatus("");
-};
-const getCategory = ()=>{
-   const getdata = localStorage.getItem("categories") 
-   const categorychange = JSON.parse(getdata)
-   console.log(categorychange);
-   
-   setShowCategory(categorychange.filter((e)=>e.status==="Active"))
-}
+    const data = localStorage.getItem("products");
+    const changedata = data ? JSON.parse(data) : [];
 
-useEffect(() => {
-  
-  const data = localStorage.getItem("products");
-  const changedata = data ? JSON.parse(data) : [];
-  
-  
-  setProducts(changedata);
-  getCategory()
-}, []);
 
+    setShowproducts(changedata);
+    getCategory()
+
+  }, [saveproducts]);
+
+
+  const handledit = (id) => {
+    const data = JSON.parse(localStorage.getItem("products")) || []
+
+    const finddata = data.find((e) => e.id === id)
+
+    setEditdata(id)
+    setProducts(finddata)
+  }
+
+
+  const handldelete = (id) => {
+
+    const data = JSON.parse(localStorage.getItem("products") ?? "[]");
+    const filtered = data.filter((item) => item.id !== id);
+    //console.log(filtered);
+    alert('Are you sure to delete')
+    localStorage.setItem("products", JSON.stringify(filtered));
+
+    setSaveproducts(filtered);
+    setShowproducts(filtered);
+
+
+  }
+
+
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    const data = JSON.parse(localStorage.getItem("products") ?? "[]");
+
+    const isDuplicate = data.some(
+      (item) =>
+        item.id !== editdata &&
+        item.name.trim().toLowerCase() ===
+        products.name.trim().toLowerCase()
+    );
+
+    if (isDuplicate) {
+      alert("The name already exists");
+      return;
+    }
+
+    const update = data.map((item) =>
+      item.id === editdata
+        ? { ...item, name: products.name, category: products.category, price: products.price, status: products.status, image: products.image }
+        : item
+    );
+
+    localStorage.setItem("products", JSON.stringify(update));
+
+    setSaveproducts(update);
+    setShowproducts(update);
+
+    alert("Value updated");
+    setProducts({ name: "", category: "", price: "", status: "", image: "" })
+
+    setEditdata("");
+  };
 
 
 
   return (
     <>
-    <div>                                                                                                                      
-      <h1 className="text-3xl text-center">Products Dashboard</h1>
-      <div className='flex gap-20 mt-10'>
-        <input value={name} onChange={(e)=>setName(e.target.value)} className="bg-gray-300 p-1 rounded" type="text" placeholder='Add Product Name...' />
 
-       <select value={category} onChange={(e)=>setCategory(e.target.value)} className="bg-gray-300 p-1 rounded" >
-        <option selected disabled value="">Select Category</option>
-        {showcategory.map((e,i)=>(
-           <option key={i+1} value={e.category}  >{e.category}</option>
-        ))}
-
-        
+      <div >
+        <h1 className='text-3xl  text-center '>Products Dashboard</h1>
+      </div>
+      <div className="bg-gray-900 mt-10 p-5 rounded-lg">
 
 
-       </select>
-        {/* <input value={category} onChange={(e)=>setCategory(e.target.value)} className="bg-gray-300 p-1 rounded" type="text" placeholder='Add Category...' /> */}
-         <input value={price} onChange={(e) => setPrice(e.target.value)} type="number" className="bg-gray-300 p-1 rounded"placeholder="Add Price..."/>
+        <div className="flex flex-wrap gap-4 items-center">
+          <input
+            value={products.name}
+            name="name"
+            onChange={handleChange}
+            type="text"
+            placeholder="Add Product Name..."
+            className="bg-gray-800 text-white px-4 py-2 rounded w-60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <select
+            value={products.category}
+            name="category"
+            onChange={handleChange}
+            className="bg-gray-800 text-white px-4 py-2 rounded w-56 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option disabled value="">
+              Select Category
+            </option>
 
 
-        <select value={status} onChange={(e) => setStatus(e.target.value)}className="bg-gray-300 p-1 rounded">
-         <option value="" disabled> Select Status</option>
-         <option value="Active">Active</option>
-         <option value="Inactive">Inactive</option>
-      </select>
+
+            {categories.map((itam) => (
+              <option key={itam.cat_id} value={itam.catname}>
+                {itam.catname}
+              </option>
+            ))}
+
+          </select>
 
 
-        <button onClick={handleClick} className="bg-black text-white px-4 rounded">Add Product</button>
+          <input
+            value={products.price}
+            name="price"
+            onChange={handleChange}
+            type="number"
+            placeholder="Add Price..."
+            className="bg-gray-800 text-white px-4 py-2 rounded w-40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            value={products.image}
+            name="image"
+            onChange={handleChange}
+            type="text"
+            placeholder="Add Image URL..."
+            className="bg-gray-800 text-white px-4 py-2 rounded w-60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <select
+            value={products.status}
+            name="status"
+            onChange={handleChange}
+            className="bg-gray-800 text-white px-4 py-2 rounded w-40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="" disabled>
+              Select Status
+            </option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+
+          {editdata ? (
+            <button
+              onClick={handleUpdate}
+              type="button"
+              className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-2 rounded font-semibold"
+            >
+              Update
+            </button>
+          ) : (
+            <button
+              onClick={handleClick}
+              type="button"
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold"
+            >
+              Add
+            </button>
+          )}
+        </div>
       </div>
 
-
- <table className="mt-6 w-full border border-gray-300">
-          <thead className="bg-gray-200">
+      <div className="mt-6 overflow-x-auto">
+        <table className="min-w-full border border-gray-700 text-white">
+          <thead className="bg-gray-800">
             <tr>
-              <th className="border p-2">ID</th>
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Category</th>
-              <th className="border p-2">Price</th>
-              <th className="border p-2">Status</th>
-              <th className='border p-2'>Actions</th>
+              <th className="border border-gray-700 px-4 py-2">ID</th>
+              <th className="border border-gray-700 px-4 py-2">Image</th>
+              <th className="border border-gray-700 px-4 py-2">Name</th>
+              <th className="border border-gray-700 px-4 py-2">Category</th>
+              <th className="border border-gray-700 px-4 py-2">Price</th>
+              <th className="border border-gray-700 px-4 py-2">Status</th>
+              <th className="border border-gray-700 px-4 py-2">Actions</th>
             </tr>
           </thead>
 
-          <tbody>
-            {products.map((e) => (
-              <tr key={e.id} className="text-center">
-                <td className="border p-2">{e.id}</td>
-                <td className="border p-2">{e.name}</td>
-                
-                <td className="border p-2">{e.category}</td>
-                <td className="border p-2" >{e.price}</td>
-                <td className="border p-2">
+          <tbody className="bg-gray-900">
+            {showproducts.map((e) => (
+              <tr
+                key={e.id}
+                className="text-center hover:bg-gray-800 transition"
+              >
+                <td className="border border-gray-700 px-4 py-2">
+                  {e.id}
+                </td>
+                <td className="border border-gray-700 px-4 py-2 align-middle">
+                  <div className="flex justify-center">
+                    <img src={e.image} alt={e.name} className="h-12 w-12 object-cover rounded" />
+                  </div>
+                </td>
+                <td className="border border-gray-700 px-4 py-2">
+                  {e.name}
+                </td>
+                <td className="border border-gray-700 px-4 py-2">
+                  {e.category}
+                </td>
+                <td className="border border-gray-700 px-4 py-2">
+                  {e.price}
+                </td>
+                <td className="border border-gray-700 px-4 py-2">
                   <span
-                    className={`px-2 py-1 rounded text-sm ${
-                      e.status === "Active"
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
+                    className={`px-3 py-1 rounded text-sm ${e.status === "Active"
+                        ? "bg-green-600"
+                        : "bg-red-600"
+                      }`}
                   >
                     {e.status}
                   </span>
                 </td>
-                <td className="border p-2 space-x-2">
-                  <button className="bg-blue-500 text-white px-3 py-1 rounded">
+                <td className="border border-gray-700 px-4 py-2">
+                  <button onClick={() => handledit(e.id)} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded mr-2">
                     Edit
                   </button>
-                  <button className="bg-red-500 text-white px-3 py-1 rounded">
+                  <button onClick={() => handldelete(e.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">
                     Delete
                   </button>
                 </td>
               </tr>
             ))}
           </tbody>
-          </table>
-    </div>
+        </table>
+      </div>
+
+
+
     </>
+
   )
 }
 
 export default Products
+

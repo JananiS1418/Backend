@@ -1,25 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import CountContext from '../context/CountContext'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
   const navigate = useNavigate()
-  const[role,setRole] = useState("")
-  const handleClick = (e)=>{
+  const { login } = useContext(CountContext)
+  const [role, setRole] = useState("")
+  const handleClick = (e) => {
     e.preventDefault()
     navigate("/register")
 
   }
 
-  const clickLogin = ()=>{
-    
-    if(role === "Customer"){
+  const clickLogin = () => {
+
+    if (role === "Customer") {
+      login()
       navigate("/")
 
 
-    }else if(role === "Admin"){
+    } else if (role === "Admin") {
+      login()
       navigate("/dashboard")
-    }else{
+    } else {
       alert("Please Select Your role")
     }
   }
@@ -28,10 +32,10 @@ const Login = () => {
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="bg-blue-200 rounded-2xl p-8 w-100">
-        
+
         <form className="flex flex-col gap-6">
-          
-          
+
+
 
           <div className="flex flex-col gap-2 ">
             <label className='text-2xl'>Enter Your Email</label>
@@ -53,19 +57,19 @@ const Login = () => {
           <div className='flex  flex-col gap-2'>
             <label className='text-2xl'>Enter Your Role</label>
             <div className="flex flex-col gap-2  bg-white text-black p-2 rounded">
-            
-            <select value={role} onChange={(e) => setRole(e.target.value)} >
-              <option   selected disabled value="">Select your role</option>
-              <option value="Customer">Customer</option>
-              <option value="Admin">Admin</option>
-            </select>
-            
-          </div>
+
+              <select value={role} onChange={(e) => setRole(e.target.value)} >
+                <option selected disabled value="">Select your role</option>
+                <option value="Customer">Customer</option>
+                <option value="Admin">Admin</option>
+              </select>
+
+            </div>
 
           </div>
-          
 
-          
+
+
           <div className="flex justify-center">
             <button onClick={clickLogin} className="bg-black text-white  rounded w-20 p-1 text-2xl">
               Login
@@ -73,10 +77,10 @@ const Login = () => {
 
 
           </div>
-           <div className='flex justify-center items-center'>
+          <div className='flex justify-center items-center'>
             <p>Don't have an account,</p>
             <button onClick={handleClick} className='text-red-600'>Register here</button>
-           </div>
+          </div>
         </form>
       </div>
     </div>

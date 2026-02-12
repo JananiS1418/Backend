@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom"
 import image from '../assets/images/add-to-cart.png'
+import { useContext } from "react"
+import CountContext from "../context/CountContext"
 
 
 
 const NavBar = () => {
+
+  const {count} = useContext(CountContext)
   return (
     <>
 
@@ -26,7 +30,8 @@ const NavBar = () => {
     <Link to="/">Products</Link>
     <Link>Categories</Link>
     <Link>Offers</Link>
-    <img src={image} className="w-10 h-10" alt="" />
+    <img src={image} className="w-10 h-10" alt="" />{count}
+    
    <Link to="/login">Login</Link>
   </div>
 

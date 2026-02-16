@@ -187,7 +187,7 @@ const Products = () => {
             name="image"
             onChange={handleChange}
             type="text"
-            placeholder="Add Image URL..."
+            placeholder="Enter Direct Image URL (https://...)"
             className="bg-gray-800 text-white px-4 py-2 rounded w-60 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
@@ -249,7 +249,12 @@ const Products = () => {
                 </td>
                 <td className="border border-gray-700 px-4 py-2 align-middle">
                   <div className="flex justify-center">
-                    <img src={e.image} alt={e.name} className="h-12 w-12 object-cover rounded" />
+                    <img
+                      src={e.image || "https://placehold.co/150?text=No+Image"}
+                      alt={e.name}
+                      className="h-12 w-12 object-cover rounded"
+                      onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/150?text=No+Image" }}
+                    />
                   </div>
                 </td>
                 <td className="border border-gray-700 px-4 py-2">
@@ -264,8 +269,8 @@ const Products = () => {
                 <td className="border border-gray-700 px-4 py-2">
                   <span
                     className={`px-3 py-1 rounded text-sm ${e.status === "Active"
-                        ? "bg-green-600"
-                        : "bg-red-600"
+                      ? "bg-green-600"
+                      : "bg-red-600"
                       }`}
                   >
                     {e.status}

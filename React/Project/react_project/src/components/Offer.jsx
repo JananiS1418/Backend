@@ -4,24 +4,34 @@ import image from '../assets/images/offer1.jpg'
 
 const Offer = () => {
   return (
-    <>
-     <div className='bg-pink-700 flex rounded   justify-between items-center  text-black h-80  '>
-        <div className='flex  flex-col gap-4'>
-            <h1 className='text-5xl text-center  text-white rounded ml-15 bg-pink-500 w-130 p-2 '>Fresh Deals Every Day</h1>
-            <h2 className='text-3xl text-white ml-35  '>Only at JM Maligaii !!!!!!!......</h2>
-            <h4 className='text-2xl text-green-900 ml-40'>Exclusive Offer!!</h4>
+    <div className='w-full mt-16 mb-10'>
+      <div className='w-full h-[400px] rounded-2xl overflow-hidden relative shadow-2xl group'>
+        <img
+          src={image}
+          className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
+          alt="Exclusive Offer"
+        />
+        <div className='absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent flex flex-col justify-center px-12 md:px-24'>
+          <h1 className='text-4xl md:text-6xl font-bold text-white mb-4 animate-fade-in-up'>
+            Fresh Deals <span className='text-green-400'>Every Day</span>
+          </h1>
+          <h2 className='text-2xl md:text-3xl text-gray-200 mb-6 font-light tracking-wide'>
+            Start your healthy journey with <span className='font-semibold text-yellow-400'>JM Maligai</span>
+          </h2>
+          <div className='flex items-center gap-4'>
+            <span className='bg-red-600 text-white px-6 py-2 rounded-full font-bold text-lg animate-pulse'>
+              Exclusive Offer
+            </span>
+            <button className='border-2 border-white text-white px-8 py-2 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300'>
+              Shop Now
+            </button>
+          </div>
         </div>
-        <div>
-            <img src={image} className='w-90 rounded h-60 mr-60' alt="" />
-            <p></p>
-        </div>
-     </div>
-     <div> 
-        <Footer/>
-     </div>
-    
-    </>
-    
+      </div>
+      <div className='mt-12'>
+        <Footer />
+      </div>
+    </div>
   )
 }
 

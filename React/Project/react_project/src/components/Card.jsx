@@ -27,47 +27,49 @@ const Card = () => {
             {products.map((e) => (
               <div
                 key={e.id}
-                className='bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col w-[320px] h-[450px]'
+                className='bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col w-[320px] h-[480px] group overflow-hidden border border-gray-100'
               >
-                <div className='relative h-48 flex items-center justify-center bg-linear-to-b from-green-50 to-white rounded-t-xl p-4'>
+                <div className='relative h-56 flex items-center justify-center bg-gray-50 overflow-hidden'>
                   <img
-                    className='w-36 h-36 object-contain'
+                    className='w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-110'
                     src={e.image || "https://placehold.co/150?text=No+Image"}
                     alt={e.name}
                     onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/150?text=No+Image" }}
                   />
+                  <div className='absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md'>
+                    SALE
+                  </div>
                 </div>
 
-                <div className='flex flex-col flex-grow p-5'>
-                  <div className='mb-4'>
-                    <h2 className='text-xl font-bold text-gray-800 text-center mb-2'>
+                <div className='flex flex-col flex-grow p-6'>
+                  <div className='mb-auto'>
+                    <h2 className='text-xl font-bold text-gray-800 text-center mb-1 line-clamp-1'>
                       {e.name}
                     </h2>
-                    <div className='flex justify-center items-center gap-2'>
-                      <p className='text-lg font-bold text-green-700'>
+                    <p className='text-gray-500 text-sm text-center mb-3'>{e.category}</p>
+
+                    <div className='flex justify-center items-end gap-2 mb-4'>
+                      <p className='text-2xl font-bold text-green-600'>
                         ₹{e.price}
                       </p>
-                      <span className='text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full'>
-                        20% OFF
-                      </span>
+                      <p className='text-sm text-gray-400 line-through mb-1'>
+                        ₹{Math.round(parseInt(e.price) * 1.2)}
+                      </p>
                     </div>
-                    <p className='text-sm text-gray-500 text-center line-through mt-1'>
-                      ₹{Math.round(parseInt(e.price) * 1.2)}
-                    </p>
                   </div>
 
-                  <div className='flex justify-center mb-4'>
-                    <div className='flex items-center border border-gray-300 rounded-lg'>
-                      <button className='px-3 py-1 text-gray-600 hover:bg-gray-100 rounded-l-lg'>-</button>
-                      <span className='px-4 py-1 border-x border-gray-300'>1 kg</span>
-                      <button className='px-3 py-1 text-gray-600 hover:bg-gray-100 rounded-r-lg'>+</button>
+                  <div className='flex justify-center mb-6'>
+                    <div className='flex items-center border border-gray-300 rounded-lg overflow-hidden'>
+                      <button className='px-4 py-1 text-gray-600 hover:bg-gray-100 transition-colors font-bold'>-</button>
+                      <span className='px-4 py-1 text-sm font-medium'>1 kg</span>
+                      <button className='px-4 py-1 text-gray-600 hover:bg-gray-100 transition-colors font-bold'>+</button>
                     </div>
                   </div>
 
                   <div className='mt-auto'>
                     <button
                       onClick={() => addToCart(e)}
-                      className='w-full bg-linear-to-r from-green-500 to-emerald-600 text-white font-semibold py-3 rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 active:scale-95'
+                      className='w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-3 rounded-xl hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 active:scale-95 flex justify-center items-center gap-2'
                     >
                       Add to Cart
                     </button>

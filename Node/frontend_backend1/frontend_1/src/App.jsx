@@ -87,82 +87,138 @@
 // export default App
 
 
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+// import axios from 'axios'
+// import React, { useEffect, useState } from 'react'
 
-const App = () => {
+// const App = () => {
 
-  const [data,setData] = useState({userEmail:"",userPassword:""})
-  const [save,setSave] = useState([])
+//   const [data,setData] = useState({userEmail:"",userPassword:""})
+//   const [save,setSave] = useState([])
  
-   const handleChange = (e)=>{
+//    const handleChange = (e)=>{
 
-     setData({...data,[e.target.name]:e.target.value})
-   }
+//      setData({...data,[e.target.name]:e.target.value})
+//    }
 
-   const handleSubmit =async (e)=>{
+//    const handleSubmit =async (e)=>{
 
-          e.preventDefault()
+//           e.preventDefault()
 
-      try {
+//       try {
 
-        const datashow = await axios.post("http://localhost:5000/api/use/check",data)
+//         const datashow = await axios.post("http://localhost:5000/api/use/check",data)
 
-        console.log(datashow);
-        alert(datashow.data.msg)
+//         console.log(datashow);
+//         alert(datashow.data.msg)
         
         
-        setData({userEmail:"",userPassword:""})
+//         setData({userEmail:"",userPassword:""})
         
-      } catch (error) {
-        console.log("error",error.response.data.msg);
+//       } catch (error) {
+//         console.log("error",error.response.data.msg);
 
         
         
-      }    
+//       }    
 
-   }
+//    }
 
-   useEffect(()=>{
+//    useEffect(()=>{
 
-    const fetchdata = async()=>{
+//     const fetchdata = async()=>{
 
-      const datas = await axios.get("http://localhost:5000/api/use/get")
+//       const datas = await axios.get("http://localhost:5000/api/use/get")
 
-      setSave(datas.data.getdatas)
-    }
+//       setSave(datas.data.getdatas)
+//     }
 
-    fetchdata()
+//     fetchdata()
 
 
-   },[])
+//    },[])
 
-  return (
-    <>
-     <div>
-      <form onSubmit={handleSubmit} >
+//   return (
+//     <>
+//      <div>
+//       <form onSubmit={handleSubmit} >
 
-        {/* <input type="text" name='userName' value={data.userName} placeholder='Enter the name' onChange={handleChange} />
-        <input type="number" name='userAge' value={data.userAge} placeholder='Enter the age' onChange={handleChange} /> */}
-        <input type="email" name='userEmail' value={data.userEmail} placeholder='Enter the email' onChange={handleChange} />
-        <input type="password" name='userPassword' value={data.userPassword} placeholder='Enter the password' onChange={handleChange} />
+//         {/* <input type="text" name='userName' value={data.userName} placeholder='Enter the name' onChange={handleChange} />
+//         <input type="number" name='userAge' value={data.userAge} placeholder='Enter the age' onChange={handleChange} /> */}
+//         <input type="email" name='userEmail' value={data.userEmail} placeholder='Enter the email' onChange={handleChange} />
+//         <input type="password" name='userPassword' value={data.userPassword} placeholder='Enter the password' onChange={handleChange} />
 
-        <input type="submit" value={"Register"} />
-      </form>
-     </div>
+//         <input type="submit" value={"Register"} />
+//       </form>
+//      </div>
 
-     {save.map((e)=>(
-      <div key={e._id}>
-        <h1>{e.userName}</h1>
-        <p>{e.userAge}</p>
-        <p>{e.userEmail}</p>
+//      {save.map((e)=>(
+//       <div key={e._id}>
+//         <h1>{e.userName}</h1>
+//         <p>{e.userAge}</p>
+//         <p>{e.userEmail}</p>
 
 
          
-      </div>
-     ))}
+//       </div>
+//      ))}
     
     
+//     </>
+//   )
+// }
+
+// export default App
+
+
+
+
+import React, { useState } from 'react'
+import axios from 'axios';
+
+const App = () => {
+
+ const [formData,setFormData] = useState({email:"",password:""})
+
+const handleChenage = (e)=>{
+
+  setFormData({...formData,[e.target.name]:e.target.value})
+
+}
+
+
+const hndleSUbmit =async (e)=>{
+
+ try {
+   e.preventDefault()
+
+ const dataSave = await axios.post("http://localhost:5000/api/login/addedthedata",formData)
+
+ alert(dataSave.data.msg);
+ alert(dataSave.data.token);
+  
+ }   catch (error) {
+
+  alert(error.response.data.msg);
+  
+  
+ }
+ 
+
+
+
+}
+
+
+  return (
+    <>
+    <div>
+      <form onSubmit={hndleSUbmit}>
+        <input type="email" name="email" placeholder='Enter the email' value={formData.email} onChange={handleChenage} />
+         
+         <input type="password" name="password" placeholder='Enter the password' value={formData.password} onChange={handleChenage} />
+         <input type="submit" value={"Login"} />
+      </form>
+    </div>
     </>
   )
 }

@@ -9,9 +9,19 @@ const Card = () => {
   const { addToCart } = useContext(CountContext)
 
   useEffect(() => {
-    const storedProducts = JSON.parse(localStorage.getItem("products")) || []
-    const activeProducts = storedProducts.filter(p => p.status === "Active")
-    setProducts(activeProducts)
+    const fetchActiveProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/products")
+        if (response.ok) {
+          const data = await response.json()
+          const activeProducts = data.filter(p => p.status === "Active")
+          setProducts(activeProducts)
+        }
+      } catch (error) {
+        console.error("Error fetching active products:", error)
+      }
+    }
+    fetchActiveProducts()
   }, [])
 
   return (
@@ -26,7 +36,7 @@ const Card = () => {
           <div className='flex flex-wrap justify-center items-stretch mb-8 gap-8'>
             {products.map((e) => (
               <div
-                key={e.id}
+                key={e._id}
                 className='bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col w-[320px] h-[480px] group overflow-hidden border border-gray-100'
               >
                 <div className='relative h-56 flex items-center justify-center bg-gray-50 overflow-hidden'>

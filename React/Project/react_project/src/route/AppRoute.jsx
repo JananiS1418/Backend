@@ -11,6 +11,7 @@ import AdminLayout from '../outlets/AdminLayout'
 import Products from '../components/Products'
 import ShowCatogery from '../components/ShowCatogery'
 import ProtectedRoute from './ProtectedRoute'
+import Profile from '../components/Profile'
 
 
 const AppRoute = () => {
@@ -22,6 +23,7 @@ const AppRoute = () => {
         <Route element={<ProtectedRoute />}>
           <Route element={<AppLayOut />}>
             <Route path="/" element={<Banner />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
 
           <Route path="/" element={<AdminLayout />}>

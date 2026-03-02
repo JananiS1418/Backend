@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
-
+import { useState, useEffect, useContext } from 'react'
+import CountContext from '../context/CountContext'
 
 
 const Products = () => {
 
+  const { user } = useContext(CountContext)
   const [products, setProducts] = useState({ name: "", category: "", price: "", status: "", image: "" })
 
   const [saveproducts, setSaveproducts] = useState([])
@@ -11,124 +12,127 @@ const Products = () => {
   const [categories, setCategories] = useState([])
   const [editdata, setEditdata] = useState("")
 
-
   const handleChange = (e) => {
-
     setProducts({ ...products, [e.target.name]: e.target.value })
-
   }
-
-
-  const handleClick = (e) => {
-
+  const handleClick = async (e) => {
     e.preventDefault()
 
-    if (!products) {
-      alert("Please fill all fields");
+    if (!products.name || !products.category || !products.price || !products.status) {
+      alert("Please fill all required fields");
       return;
     }
 
-    const data = localStorage.getItem("products");
-    const productsArray = data ? JSON.parse(data) : [];
+    try {
+      const response = await fetch("http://localhost:5000/api/products", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${user?.token}`
+        },
+        body: JSON.stringify(products)
+      })
 
-    const storedata = {
-      id: productsArray.length + 1,
-      name: products.name,
-      category: products.category,
-      price: products.price,
-      status: products.status,
-      image: products.image
-    };
-
-    productsArray.push(storedata);
-
-    localStorage.setItem("products", JSON.stringify(productsArray));
-    setSaveproducts(productsArray);
-
-    setProducts({ name: "", category: "", price: "", status: "", image: "" })
-
-
+      if (response.ok) {
+        setProducts({ name: "", category: "", price: "", status: "", image: "" })
+        fetchProducts()
+        alert("Product added successfully")
+      } else {
+        alert("Failed to add product")
+      }
+    } catch (error) {
+      console.error("Error adding product:", error)
+    }
   }
 
-  const getCategory = () => {
-    const getdata = localStorage.getItem("categorydata");
-    const categorychange = getdata ? JSON.parse(getdata) : [];
-    console.log(categorychange);
-
-    setCategories(categorychange.filter((e) => e.catstatus === "Active"));
+  const getCategory = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/categories")
+      if (response.ok) {
+        const data = await response.json()
+        setCategories(data.filter((e) => e.catstatus === "Active"));
+      }
+    } catch (error) {
+      console.error("Error fetching categories for products:", error)
+    }
   };
 
 
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/products")
+      if (response.ok) {
+        const data = await response.json()
+        setShowproducts(data)
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error)
+    }
+  }
+
   useEffect(() => {
-
-    const data = localStorage.getItem("products");
-    const changedata = data ? JSON.parse(data) : [];
-
-
-    setShowproducts(changedata);
+    fetchProducts()
     getCategory()
-
-  }, [saveproducts]);
+  }, []);
 
 
   const handledit = (id) => {
-    const data = JSON.parse(localStorage.getItem("products")) || []
-
-    const finddata = data.find((e) => e.id === id)
-
+    const finddata = showproducts.find((e) => e._id === id)
     setEditdata(id)
-    setProducts(finddata)
+    setProducts({
+      name: finddata.name,
+      category: finddata.category,
+      price: finddata.price,
+      status: finddata.status,
+      image: finddata.image
+    })
   }
 
 
-  const handldelete = (id) => {
+  const handldelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this product?')) return;
 
-    const data = JSON.parse(localStorage.getItem("products") ?? "[]");
-    const filtered = data.filter((item) => item.id !== id);
-    //console.log(filtered);
-    alert('Are you sure to delete')
-    localStorage.setItem("products", JSON.stringify(filtered));
+    try {
+      const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${user?.token}`
+        }
+      })
 
-    setSaveproducts(filtered);
-    setShowproducts(filtered);
-
-
+      if (response.ok) {
+        fetchProducts()
+        alert("Product deleted")
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error)
+    }
   }
 
 
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const data = JSON.parse(localStorage.getItem("products") ?? "[]");
+    try {
+      const response = await fetch(`http://localhost:5000/api/products/${editdata}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${user?.token}`
+        },
+        body: JSON.stringify(products)
+      })
 
-    const isDuplicate = data.some(
-      (item) =>
-        item.id !== editdata &&
-        item.name.trim().toLowerCase() ===
-        products.name.trim().toLowerCase()
-    );
-
-    if (isDuplicate) {
-      alert("The name already exists");
-      return;
+      if (response.ok) {
+        fetchProducts()
+        alert("Value updated");
+        setProducts({ name: "", category: "", price: "", status: "", image: "" })
+        setEditdata("");
+      }
+    } catch (error) {
+      console.error("Error updating product:", error)
     }
-
-    const update = data.map((item) =>
-      item.id === editdata
-        ? { ...item, name: products.name, category: products.category, price: products.price, status: products.status, image: products.image }
-        : item
-    );
-
-    localStorage.setItem("products", JSON.stringify(update));
-
-    setSaveproducts(update);
-    setShowproducts(update);
-
-    alert("Value updated");
-    setProducts({ name: "", category: "", price: "", status: "", image: "" })
-
-    setEditdata("");
   };
 
 
@@ -165,7 +169,7 @@ const Products = () => {
 
 
             {categories.map((itam) => (
-              <option key={itam.cat_id} value={itam.catname}>
+              <option key={itam._id} value={itam.catname}>
                 {itam.catname}
               </option>
             ))}
@@ -241,11 +245,11 @@ const Products = () => {
           <tbody className="bg-gray-900">
             {showproducts.map((e) => (
               <tr
-                key={e.id}
+                key={e._id}
                 className="text-center hover:bg-gray-800 transition"
               >
                 <td className="border border-gray-700 px-4 py-2">
-                  {e.id}
+                  {e._id.slice(-4)}
                 </td>
                 <td className="border border-gray-700 px-4 py-2 align-middle">
                   <div className="flex justify-center">
@@ -277,10 +281,10 @@ const Products = () => {
                   </span>
                 </td>
                 <td className="border border-gray-700 px-4 py-2">
-                  <button onClick={() => handledit(e.id)} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded mr-2">
+                  <button onClick={() => handledit(e._id)} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded mr-2">
                     Edit
                   </button>
-                  <button onClick={() => handldelete(e.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">
+                  <button onClick={() => handldelete(e._id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">
                     Delete
                   </button>
                 </td>

@@ -8,14 +8,16 @@ const UseProvider = ({ children }) => {
 
   const [cart, setCart] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || []
     setCart(storedCart)
 
-    const auth = localStorage.getItem("auth")
-    if (auth === "true") {
+    const storedUser = JSON.parse(localStorage.getItem("user"))
+    if (storedUser && storedUser.token) {
       setIsAuthenticated(true)
+      setUser(storedUser)
     }
   }, [])
 
@@ -27,21 +29,23 @@ const UseProvider = ({ children }) => {
     setCart([...cart, product])
   }
 
-  const login = () => {
+  const login = (userData) => {
     setIsAuthenticated(true)
-    localStorage.setItem("auth", "true")
+    setUser(userData)
+    localStorage.setItem("user", JSON.stringify(userData))
   }
 
   const logout = () => {
     setIsAuthenticated(false)
-    localStorage.removeItem("auth")
+    setUser(null)
+    localStorage.removeItem("user")
   }
 
   const count = cart.length
 
   return (
     <>
-      < CountContext.Provider value={{ addToCart, cart, count, login, logout, isAuthenticated }}>
+      < CountContext.Provider value={{ addToCart, cart, count, login, logout, isAuthenticated, user }}>
 
         {children}
       </ CountContext.Provider>

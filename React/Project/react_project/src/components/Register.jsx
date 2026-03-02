@@ -11,12 +11,36 @@ const Register = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault()
 
     if (name && email && password && role) {
-      localStorage.setItem("user", JSON.stringify({ name, email, password, role }))
-      navigate("/login")
+      try {
+        const reg = { name, email, password, role } // Added reg object
+        const response = await fetch("http://localhost:5000/api/users/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(reg) // Used reg object
+        })
+
+        if (response.ok) {
+          const data = await response.json() // Get response data
+          alert("Registration successful!")
+          login(data); // Call login with user data
+
+          if (data.role === "Admin") {
+            navigate("/dashboard"); // Corrected typo from dashbaord to dashboard
+          } else {
+            navigate("/");
+          }
+        } else {
+          const errorData = await response.json()
+          alert(errorData.message || "Registration failed")
+        }
+      } catch (error) {
+        console.error("Error during registration:", error)
+        alert("Something went wrong") // Moved alert inside catch block
+      }
     } else {
       alert("Please fill all fields")
     }

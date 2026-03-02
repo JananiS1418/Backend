@@ -5,7 +5,7 @@ import CountContext from "../context/CountContext"
 
 const NavBar = () => {
 
-  const { count, isAuthenticated, logout } = useContext(CountContext)
+  const { count, isAuthenticated, logout, user } = useContext(CountContext)
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -46,10 +46,15 @@ const NavBar = () => {
         {/* Auth Buttons */}
         {isAuthenticated ? (
           <div className="flex items-center gap-4">
-            <span className="text-gray-800 font-semibold cursor-pointer hover:text-green-600 transition">Profile</span>
+            <Link to="/profile" className="text-gray-800 font-semibold cursor-pointer hover:text-green-600 transition flex items-center gap-2">
+              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white text-xs">
+                {user?.name.charAt(0).toUpperCase()}
+              </div>
+              {user?.name}
+            </Link>
             <button
               onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition duration-300 shadow-md"
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition duration-300 shadow-md font-sans"
             >
               Logout
             </button>

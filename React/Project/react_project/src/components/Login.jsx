@@ -15,20 +15,32 @@ const Login = () => {
 
   }
 
-  const clickLogin = (e) => {
+  const clickLogin = async (e) => {
     e.preventDefault()
-    const storedUser = JSON.parse(localStorage.getItem("user"))
 
-    if (storedUser && storedUser.email === email && storedUser.password === password) {
-      if (storedUser.role === "Customer") {
-        login()
-        navigate("/")
-      } else if (storedUser.role === "Admin") {
-        login()
-        navigate("/dashboard")
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        login(data); // data contains _id, name, email, role, token
+
+        if (data.role === "Admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
+      } else {
+        const errorData = await response.json()
+        alert(errorData.message || "Invalid credentials")
       }
-    } else {
-      alert("Give correct email and password")
+    } catch (error) {
+      console.error("Error during login:", error)
+      alert("Something went wrong")
     }
   }
 

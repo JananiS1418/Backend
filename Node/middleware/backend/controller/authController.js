@@ -68,3 +68,14 @@ export const  logindata = async(req,res)=>{
         
     }
 }
+
+
+
+export const dashBoardData = async(req,res)=>{
+
+    console.log(req);
+
+    res.status(200).json(req.user)
+    
+
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route,Routes} from 'react-router-dom'
+import {Navigate, Route,Routes} from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
@@ -11,7 +11,7 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
-      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/dashboard' element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
     </Routes>
     
     </>
@@ -19,3 +19,14 @@ const App = () => {
 }
 
 export default App
+
+
+
+
+export const PrivateRoute = ({children})=>{
+
+  const token = localStorage.getItem("token")
+
+  return token ? children : <Navigate to={"/"} />
+
+}
